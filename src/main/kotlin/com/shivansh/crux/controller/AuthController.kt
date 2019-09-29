@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
 @RequestMapping("/auth")
-class AuthController {
+class AuthController : BaseController() {
     @GetMapping("/login")
     fun login(model: Model): String {
         return "login"
