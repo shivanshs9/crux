@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
 
 interface ISecurityService {
+    fun findLoggedInUserDetails(): UserDetails?
     fun findLoggedInUsername(): String?
     fun autoLogin(username: String, password: String): Boolean
     fun logout(): Boolean
@@ -27,7 +28,7 @@ class SecurityService: ISecurityService {
 
     private val logger = LoggerFactory.getLogger(SecurityService::class.java)
 
-    private fun findLoggedInUserDetails(): UserDetails? = (SecurityContextHolder.getContext().authentication.principal as? UserDetails)
+    override fun findLoggedInUserDetails(): UserDetails? = (SecurityContextHolder.getContext().authentication.principal as? UserDetails)
 
     override fun findLoggedInUsername(): String? = findLoggedInUserDetails()?.username
 

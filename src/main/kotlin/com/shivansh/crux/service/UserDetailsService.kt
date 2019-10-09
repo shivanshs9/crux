@@ -25,9 +25,9 @@ class UserDetailsService: UserDetailsService {
         val user = userRepository.findByUsername(username)
         return user?.let {
             val authorities = mutableListOf<GrantedAuthority>()
-            val businesses = businessService.findByUser(it)
+            val business = businessService.findByUser(it)
             authorities.add(REGULAR_USER)
-            businesses.map { authorities.add(if (it.position == BusinessMember.POSITION.Owner) BUSINESS_OWNER else BUSINESS_EMPLOYEE) }
+            business?.let { authorities.add(if (it.position == BusinessMember.POSITION.Owner) BUSINESS_OWNER else BUSINESS_EMPLOYEE) }
 
             User(it.username, it.password, authorities)
         } ?: throw UsernameNotFoundException(username)

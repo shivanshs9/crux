@@ -1,5 +1,9 @@
 {% extends 'base.twig' %}
 
+{% block header %}
+{% include 'header-nav-transparent.twig' %}
+{% endblock %}
+
 {% block content %}
 
 <div class="workscout-search-banner jobs-search-banner  with-transparent-header parallax background " data-diff="300"
@@ -517,5 +521,16 @@
 
 	})(this.jQuery);
 
+
+</script>
+
+<script type="text/javascript">
+(function($){
+	$(document).ready(function() {
+		if (window.location.search == "?login") {
+			$("#login-link").click();
+		}
+	});
+})(this.jQuery);
 </script>
 {% endblock %}

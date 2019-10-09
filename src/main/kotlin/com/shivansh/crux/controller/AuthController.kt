@@ -10,11 +10,9 @@ import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.View
 import org.springframework.web.servlet.view.RedirectView
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
+import javax.servlet.http.HttpSession
 
 @RestController
 @RequestMapping("/auth")
@@ -26,19 +24,20 @@ class AuthController : BaseController() {
     private lateinit var businessService: IBusinessService
 
     @PostMapping("/login")
-    fun login(@ModelAttribute data: LoginData, request: HttpServletRequest, response: HttpServletResponse): BaseResponseData {
+    fun login(@ModelAttribute data: LoginData, session: HttpSession): BaseResponseData {
         data.validate()
         return if (data.isValid()) {
             securityService.autoLogin(data.username!!, data.password!!)
-            request.session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext())
-            response.setHeader("Access-Control-Allow-Credentials", "true")
-            data.redirectTo = "/"
+            session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext())
+            if (data.redirectTo == null) {
+                data.redirectTo = "/"
+            }
             data
         } else throw InvalidDataException(data.errors)
     }
 
     @PostMapping("/register")
-    fun register(@ModelAttribute data: RegisterData, request: WebRequest): BaseResponseData {
+    fun register(@ModelAttribute data: RegisterData): BaseResponseData {
         data.validate()
         return if (data.isValid()) {
             if (!data.validUsername(userService)) data.invalidField("username", "Username already taken")

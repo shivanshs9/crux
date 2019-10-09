@@ -21,8 +21,9 @@ open class BaseController {
     @ModelAttribute
     fun getLoginInfo(model: Model) {
         model["is_logged_in"] = false
-        securityService.findLoggedInUsername()?.let {
-            model["username"] = it
+        securityService.findLoggedInUserDetails()?.let {
+            model["username"] = it.username
+            model["roles"] = it.authorities.map { it.authority }
             model["is_logged_in"] = true
         }
     }

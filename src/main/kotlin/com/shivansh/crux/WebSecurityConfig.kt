@@ -1,5 +1,7 @@
 package com.shivansh.crux
 
+import com.shivansh.crux.service.UserDetailsService.Companion.BUSINESS_EMPLOYEE
+import com.shivansh.crux.service.UserDetailsService.Companion.BUSINESS_OWNER
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -27,10 +29,12 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
         http?.let {
             it.authorizeRequests()
                     .antMatchers("/", "/static/**", "/auth/**").permitAll()
+                    .antMatchers("/business/admin/**").hasAuthority(BUSINESS_OWNER.authority)
+                    .antMatchers("/business/work/**").hasAuthority(BUSINESS_EMPLOYEE.authority)
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
-                    .loginPage("/auth/login/")
+                    .loginPage("/?login")
                     .permitAll()
                     .and()
                     .logout()

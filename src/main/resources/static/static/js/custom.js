@@ -398,6 +398,7 @@ $(window).bind("load resize",function(){
                     if (data.redirectTo) {
                         window.location.href = data.redirectTo;
                     }
+                    $.magnificPopup.close();
                 },
                 complete: function(e) {
                   $(button).css('backgroundColor', ws.theme_color);

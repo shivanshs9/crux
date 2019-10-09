@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface BusinessMemberRepository : CrudRepository<BusinessMember, Long> {
     fun findByUserAndBusiness(user: User, business: Business): BusinessMember?
-    fun findByUser(user: User): List<BusinessMember>
+    fun findByUser(user: User): BusinessMember?
 }

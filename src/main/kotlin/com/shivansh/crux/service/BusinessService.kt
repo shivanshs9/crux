@@ -17,7 +17,7 @@ interface IBusinessService {
         createNewBusiness(name, creator, Calendar.getInstance().time)
     }
 
-    fun findByUser(user: User): List<BusinessMember>
+    fun findByUser(user: User): BusinessMember?
 }
 
 @Service
@@ -46,5 +46,5 @@ class BusinessService : IBusinessService {
         businessMemberRepository.save(businessMember)
     }
 
-    override fun findByUser(user: User): List<BusinessMember> = businessMemberRepository.findByUser(user)
+    override fun findByUser(user: User): BusinessMember? = businessMemberRepository.findByUser(user)
 }

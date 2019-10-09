@@ -1,26 +1,28 @@
 CREATE TABLE IF NOT EXISTS test
 (
+  id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(40) NOT NULL,
-  createdTime DATE NOT NULL,
+  createdTime DATETIME NOT NULL,
   summary VARCHAR(80) NOT NULL,
   description VARCHAR(256) NOT NULL,
-  id INT NOT NULL AUTO_INCREMENT,
-  startTime DATE NOT NULL,
-  endTime DATE NOT NULL,
+  organizer VARCHAR(90) NULL,
+  startTime DATETIME NOT NULL,
+  endTime DATETIME NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS business
 (
+  id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(30) NOT NULL UNIQUE,
   logo VARCHAR(256) NULL,
-  createdTime DATE NOT NULL,
-  id INT NOT NULL AUTO_INCREMENT,
+  createdTime DATETIME NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS user
 (
+  id INT NOT NULL AUTO_INCREMENT,
   username VARCHAR(30) NOT NULL UNIQUE,
   firstName VARCHAR(30) NOT NULL,
   lastName VARCHAR(30) NULL,
@@ -32,19 +34,18 @@ CREATE TABLE IF NOT EXISTS user
   password VARCHAR(512) NOT NULL,
   address VARCHAR(128) NULL,
   DOB DATE NULL,
-  joinedTime DATE NOT NULL,
-  id INT NOT NULL AUTO_INCREMENT,
+  joinedTime DATETIME NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS education_qualification
 (
+  id INT NOT NULL AUTO_INCREMENT,
   degree VARCHAR(128) NOT NULL,
   course VARCHAR(128) NOT NULL,
   institute VARCHAR(256) NOT NULL,
   grade VARCHAR(4) NOT NULL,
   year INT NOT NULL,
-  id INT NOT NULL AUTO_INCREMENT,
   userId INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (userId) REFERENCES user(id)
@@ -52,11 +53,11 @@ CREATE TABLE IF NOT EXISTS education_qualification
 
 CREATE TABLE IF NOT EXISTS business_member
 (
-  joinedTime DATE NOT NULL,
-  position ENUM('Owner', 'Employee') NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
+  joinedTime DATETIME NOT NULL,
+  position ENUM('Owner', 'Employee') NOT NULL,
   businessId INT NOT NULL,
-  userId INT NOT NULL,
+  userId INT NOT NULL UNIQUE,
   PRIMARY KEY (id),
   FOREIGN KEY (businessId) REFERENCES business(id),
   FOREIGN KEY (userId) REFERENCES user(id)
@@ -64,9 +65,9 @@ CREATE TABLE IF NOT EXISTS business_member
 
 CREATE TABLE IF NOT EXISTS participant
 (
-  registeredTime DATE NOT NULL,
-  startTime DATE NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
+  registeredTime DATETIME NOT NULL,
+  startTime DATETIME NOT NULL,
   testId INT NOT NULL,
   userId INT NOT NULL,
   PRIMARY KEY (id),
@@ -84,17 +85,17 @@ CREATE TABLE IF NOT EXISTS test_tag
 
 CREATE TABLE IF NOT EXISTS coding_language
 (
-  language VARCHAR(30) NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
+  language VARCHAR(30) NOT NULL,
   compiler VARCHAR(30) NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS problem_setter
 (
-  isCreator INT NOT NULL,
-  joinedTime INT NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
+  isCreator TINYINT NOT NULL,
+  joinedTime DATETIME NOT NULL,
   testId INT NOT NULL,
   businessMemberId INT NOT NULL,
   PRIMARY KEY (id),
@@ -104,9 +105,9 @@ CREATE TABLE IF NOT EXISTS problem_setter
 
 CREATE TABLE IF NOT EXISTS account
 (
-  providerType ENUM('EMAIL', 'PHONE') NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
-  createdTime DATE NOT NULL,
+  providerType ENUM('EMAIL', 'PHONE') NOT NULL,
+  createdTime DATETIME NOT NULL,
   providerId VARCHAR(512) NOT NULL,
   userId INT NOT NULL,
   PRIMARY KEY (id),
@@ -115,23 +116,23 @@ CREATE TABLE IF NOT EXISTS account
 
 CREATE TABLE IF NOT EXISTS coding_question
 (
+  id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(56) NOT NULL,
   problemStatement VARCHAR(512) NOT NULL,
   marks INT NOT NULL,
-  id INT NOT NULL AUTO_INCREMENT,
   testId INT NOT NULL,
-  problemSetter INT NOT NULL,
+  problemSetterId INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (testId) REFERENCES test(id),
-  FOREIGN KEY (problemSetter) REFERENCES problem_setter(id)
+  FOREIGN KEY (problemSetterId) REFERENCES problem_setter(id)
 );
 
 CREATE TABLE IF NOT EXISTS mcq_question
 (
+  id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(56) NOT NULL,
   description VARCHAR(512) NOT NULL,
   marks INT NOT NULL,
-  id INT NOT NULL AUTO_INCREMENT,
   testId INT NOT NULL,
   problemSetter INT NOT NULL,
   PRIMARY KEY (id),
@@ -141,20 +142,20 @@ CREATE TABLE IF NOT EXISTS mcq_question
 
 CREATE TABLE IF NOT EXISTS test_case
 (
+  id INT NOT NULL AUTO_INCREMENT,
   input VARCHAR(1024) NOT NULL,
   output VARCHAR(1024) NOT NULL,
   score INT NOT NULL,
-  id INT NOT NULL AUTO_INCREMENT,
-  testId INT NOT NULL,
+  questionId INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (testId) REFERENCES coding_question(id)
+  FOREIGN KEY (questionId) REFERENCES coding_question(id)
 );
 
 CREATE TABLE IF NOT EXISTS mcq_option
 (
-  statement VARCHAR(256) NOT NULL,
-  isCorrect INT NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
+  statement VARCHAR(256) NOT NULL,
+  isCorrect TINYINT NOT NULL,
   questionId INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (questionId) REFERENCES mcq_question(id)
@@ -162,11 +163,11 @@ CREATE TABLE IF NOT EXISTS mcq_option
 
 CREATE TABLE IF NOT EXISTS coding_submission
 (
-  code VARCHAR(4096) NOT NULL,
-  submittedTime DATE NOT NULL,
-  status INT NOT NULL,
-  score INT NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
+  code VARCHAR(4096) NOT NULL,
+  submittedTime DATETIME NOT NULL,
+  status ENUM('pro', 'ac', 'tle', 'ce', 're', 'wa', 'mle') NOT NULL,
+  score INT NOT NULL,
   participantId INT NOT NULL,
   codingLanguage INT NOT NULL,
   questionId INT NOT NULL,
@@ -178,9 +179,9 @@ CREATE TABLE IF NOT EXISTS coding_submission
 
 CREATE TABLE IF NOT EXISTS mcq_submission
 (
-  submittedTime DATE NOT NULL,
-  score INT NOT NULL,
   id INT NOT NULL AUTO_INCREMENT,
+  submittedTime DATETIME NOT NULL,
+  score INT NOT NULL,
   participantId INT NOT NULL,
   optionId INT NOT NULL,
   questionId INT NOT NULL,
@@ -223,3 +224,5 @@ CREATE TABLE IF NOT EXISTS passed_test_case
   FOREIGN KEY (testCaseId) REFERENCES test_case(id),
   FOREIGN KEY (submissionId) REFERENCES coding_submission(id)
 );
+
+--SET FOREIGN_KEY_CHECKS = 1;

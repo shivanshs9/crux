@@ -14,7 +14,9 @@ class Test {
     lateinit var createdTime: Date
     lateinit var summary: String
     lateinit var description: String
+
+    var organizer: String? = null
+
     lateinit var startTime: Date
     lateinit var endTime: Date
-
 }
