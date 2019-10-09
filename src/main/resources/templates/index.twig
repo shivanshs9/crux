@@ -1,533 +1,521 @@
 {% extends 'base.twig' %}
 
 {% block content %}
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Vacation<span>Travel Agency</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="destination.html" class="nav-link">Destination</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="#" class="nav-link">Book Now</a></li>
+<div class="workscout-search-banner jobs-search-banner  with-transparent-header parallax background " data-diff="300"
+	 data-img-height="" data-img-width="" id="banner"
+	 style="background-image: url(https://workscout.wpengine.com/wp-content/uploads/2017/06/banner-home-02.jpg);">
+	<div class="container">
+		<div class="sixteen columns">
 
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-    
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-          	<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
-          		<span class="ion-ios-play"></span>
-            </a>
-            <p class="caps" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Travel to the any corner of the world, without going around in circles</p>
-            <h1 data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Make Your Tour Amazing With Us</h1>
-          </div>
-        </div>
-      </div>
-    </div>
+			<div class="search-container sc-jobs">
 
-    <section class="ftco-section ftco-no-pb ftco-no-pt">
-    	<div class="container">
-	    	<div class="row">
-					<div class="col-md-12">
-						<div class="search-wrap-1 ftco-animate p-4">
-							<form action="#" class="search-property-1">
-		        		<div class="row">
-		        			<div class="col-lg align-items-end">
-		        				<div class="form-group">
-		        					<label for="#">Destination</label>
-		          				<div class="form-field">
-		          					<div class="icon"><span class="ion-ios-search"></span></div>
-				                <input type="text" class="form-control" placeholder="Search place">
-				              </div>
-			              </div>
-		        			</div>
-		        			<div class="col-lg align-items-end">
-		        				<div class="form-group">
-		        					<label for="#">Check-in date</label>
-		        					<div class="form-field">
-		          					<div class="icon"><span class="ion-ios-calendar"></span></div>
-				                <input type="text" class="form-control checkin_date" placeholder="Check In Date">
-				              </div>
-			              </div>
-		        			</div>
-		        			<div class="col-lg align-items-end">
-		        				<div class="form-group">
-		        					<label for="#">Check-out date</label>
-		        					<div class="form-field">
-		          					<div class="icon"><span class="ion-ios-calendar"></span></div>
-				                <input type="text" class="form-control checkout_date" placeholder="Check Out Date">
-				              </div>
-			              </div>
-		        			</div>
-		        			<div class="col-lg align-items-end">
-		        				<div class="form-group">
-		        					<label for="#">Price Limit</label>
-		        					<div class="form-field">
-		          					<div class="select-wrap">
-		                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-		                      <select name="" id="" class="form-control">
-		                        <option value="">$5,000</option>
-		                        <option value="">$10,000</option>
-		                        <option value="">$50,000</option>
-		                        <option value="">$100,000</option>
-		                        <option value="">$200,000</option>
-		                        <option value="">$300,000</option>
-		                        <option value="">$400,000</option>
-		                        <option value="">$500,000</option>
-		                        <option value="">$600,000</option>
-		                        <option value="">$700,000</option>
-		                        <option value="">$800,000</option>
-		                        <option value="">$900,000</option>
-		                        <option value="">$1,000,000</option>
-		                        <option value="">$2,000,000</option>
-		                      </select>
-		                    </div>
-				              </div>
-			              </div>
-		        			</div>
-		        			<div class="col-lg align-self-end">
-		        				<div class="form-group">
-		        					<div class="form-field">
-				                <input type="submit" value="Search" class="form-control btn btn-primary">
-				              </div>
-			              </div>
-		        			</div>
-		        		</div>
-		        	</form>
-		        </div>
+				<!-- Form -->
+				<h2>Find Job</h2>
+				<form action="https://workscout.in/browse-jobs/" class="inputs-number-2" method="GET">
+
+
+					<input class="ico-01" id="search_keywords" name="search_keywords"
+						   placeholder="job title, keywords or company name" type="text" value=""/>
+
+					<input class="ico-02" id="search_location" name="search_location"
+						   placeholder="city, province or region" type="text" value=""/>
+
+
+					<button><i class="fa fa-search"></i></button>
+
+				</form>
+				<!-- Browse Jobs -->
+				<div class="browse-jobs">
+					Or browse job offers by <a href="browse-categories/index.html">category</a></div>
+
+				<!-- Announce -->
+				<div class="announce">
+					We have <strong>23</strong> job offers for you!
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- 960 Container -->
+<div class="container page-container home-page-container">
+	<article class="sixteen columns post-9 page type-page status-publish hentry">
+		<div class="vc_row wpb_row vc_row-fluid vc_custom_1521229758973">
+			<div class="wpb_column vc_column_container vc_col-sm-12">
+				<div class="vc_column-inner ">
+					<div class="wpb_wrapper"><h3 class=" headline margin-top-0 margin-bottom-25 "
+												 style="text-align:left;">Popular Categories</h3>
+						<div class="categories-boxes-container">
+							<!-- Box -->
+							<a class="category-small-box" href="job-category/restaurant-food-service/index.html"> <i
+									class="ln ln-icon-Plates"></i><h4>Restaurant / Food Service</h4><span>7</span></a>
+							<!-- Box -->
+							<a class="category-small-box" href="job-category/healthcare/index.html"> <i
+									class="ln ln-icon-Medical-Sign"></i><h4>Healthcare</h4><span>5</span></a>
+							<!-- Box -->
+							<a class="category-small-box" href="job-category/telecommunications/index.html"> <i
+									class="ln ln-icon-Communication-Tower2"></i><h4>Telecommunications</h4>
+								<span>4</span></a>
+							<!-- Box -->
+							<a class="category-small-box" href="job-category/accounting-finance/index.html"> <i
+									class="ln ln-icon-Bar-Chart"></i><h4>Accounting / Finance</h4><span>3</span></a>
+							<!-- Box -->
+							<a class="category-small-box" href="job-category/automotive-jobs/index.html"> <i
+									class="ln ln-icon-Car-3"></i><h4>Automotive Jobs</h4><span>3</span></a>
+							<!-- Box -->
+							<a class="category-small-box" href="job-category/construction-facilities/index.html"> <i
+									class="ln ln-icon-Worker"></i><h4>Construction / Facilities</h4><span>3</span></a>
+							<!-- Box -->
+							<a class="category-small-box" href="job-category/education-training/index.html"> <i
+									class="ln ln-icon-Student-Female"></i><h4>Education Training</h4><span>2</span></a>
+							<!-- Box -->
+							<a class="category-small-box" href="job-category/transportation-logistics/index.html"> <i
+									class="fa fa-globe"></i><h4>Transportation / Logistics</h4><span>2</span></a></div>
+						<div class="margin-top-30"></div>
+						<a class="button centered" href="browse-categories/index.html">Browse All Categories</a>
+						<div class="margin-bottom-50"></div>
 					</div>
-	    	</div>
-	    </div>
-    </section>
+				</div>
+			</div>
+		</div>
+		<div class="vc_row wpb_row vc_row-fluid vc_row-no-padding" data-vc-full-width="true"
+			 data-vc-full-width-init="false" data-vc-stretch-content="true">
+			<div class="wpb_column vc_column_container vc_col-sm-12">
+				<div class="vc_column-inner ">
+					<div class="wpb_wrapper">
+						<div class="vc_separator wpb_content_element vc_separator_align_center vc_sep_width_100 vc_sep_pos_align_center vc_separator_no_text vc_sep_color_grey vc_custom_1521227854183  vc_custom_1521227854183">
+							<span class="vc_sep_holder vc_sep_holder_l"><span class="vc_sep_line"></span></span><span
+								class="vc_sep_holder vc_sep_holder_r"><span class="vc_sep_line"></span></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="vc_row-full-width vc_clearfix"></div>
+		<div class="vc_row wpb_row vc_row-fluid">
+			<div class="wpb_column vc_column_container vc_col-sm-8">
+				<div class="vc_column-inner ">
+					<div class="wpb_wrapper"><H3 class="margin-top-0 margin-bottom-25">Recent Jobs</H3>
+						<div class="wpb_text_column wpb_content_element ">
+							<div class="wpb_wrapper">
+								<div class="job_listings " data-categories="" data-job_types="" data-keywords=""
+									 data-location="" data-order="DESC" data-orderby="featured" data-per_page="4"
+									 data-show_filters="false" data-show_pagination="false">
+									<!-- Listings Loader -->
+									<div class="listings-loader">
+										<div class="spinner">
+											<div class="double-bounce1"></div>
+											<div class="double-bounce2"></div>
+										</div>
+									</div>
 
-    <section class="ftco-section services-section bg-light">
-      <div class="container">
-        <div class="row d-flex">
-          <div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate">
-          	<h2 class="mb-4">It's time to start your adventure</h2>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-            A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-            <p><a href="#" class="btn btn-primary py-3 px-4">Search Destination</a></p>
-          </div>
-          <div class="col-md-6">
-          	<div class="row">
-          		<div class="col-md-6 d-flex align-self-stretch ftco-animate">
-		            <div class="media block-6 services d-block">
-		              <div class="icon"><span class="flaticon-paragliding"></span></div>
-		              <div class="media-body">
-		                <h3 class="heading mb-3">Activities</h3>
-		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
-		              </div>
-		            </div>      
-		          </div>
-		          <div class="col-md-6 d-flex align-self-stretch ftco-animate">
-		            <div class="media block-6 services d-block">
-		              <div class="icon"><span class="flaticon-route"></span></div>
-		              <div class="media-body">
-		                <h3 class="heading mb-3">Travel Arrangements</h3>
-		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
-		              </div>
-		            </div>    
-		          </div>
-		          <div class="col-md-6 d-flex align-self-stretch ftco-animate">
-		            <div class="media block-6 services d-block">
-		              <div class="icon"><span class="flaticon-tour-guide"></span></div>
-		              <div class="media-body">
-		                <h3 class="heading mb-3">Private Guide</h3>
-		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
-		              </div>
-		            </div>      
-		          </div>
-		          <div class="col-md-6 d-flex align-self-stretch ftco-animate">
-		            <div class="media block-6 services d-block">
-		              <div class="icon"><span class="flaticon-map"></span></div>
-		              <div class="media-body">
-		                <h3 class="heading mb-3">Location Manager</h3>
-		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
-		              </div>
-		            </div>      
-		          </div>
-          	</div>
-          </div>
-        </div>
-      </div>
-    </section>
+									<ul class="job_listings job-list full  new-layout hide-desc">
 
-    <section class="ftco-counter img" id="section-counter">
-    	<div class="container">
-    		<div class="row d-flex">
-    			<div class="col-md-6 d-flex">
-    				<div class="img d-flex align-self-stretch" style="background-image:url(images/about.jpg);"></div>
-    			</div>
-    			<div class="col-md-6 pl-md-5 py-5">
-    				<div class="row justify-content-start pb-3">
-		          <div class="col-md-12 heading-section ftco-animate">
-		            <h2 class="mb-4">Make Your Tour Memorable and Safe With Us</h2>
-		            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-		          </div>
-		        </div>
-		    		<div class="row">
-		          <div class="col-md-4 justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center mb-4">
-		              <div class="text">
-		                <strong class="number" data-number="300">0</strong>
-		                <span>Successful Tours</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-4 justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center mb-4">
-		              <div class="text">
-		                <strong class="number" data-number="24000">0</strong>
-		                <span>Happy Tourist</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-4 justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center mb-4">
-		              <div class="text">
-		                <strong class="number" data-number="200">0</strong>
-		                <span>Place Explored</span>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-	        </div>
-        </div>
-    	</div>
-    </section>
+										<!-- Listing -->
+										<li data-color="#e12335" data-latitude="51.54327"
+											data-longitude="-0.001870000000053551">
+											<a class="left post-2489 job_listing type-job_listing status-publish has-post-thumbnail hentry job_listing_region-miami job_listing_category-restaurant-food-service job_listing_type-temporary job-type-temporary job_position_featured"
+											   data-color="#e12335" data-latitude="51.54327"
+											   data-longitude="-0.001870000000053551"
+											   href="job/restaurant-dishwasher/index.html">
+												<div class="listing-logo">
+													<img alt="King LLC" class="company_logo"
+														 src="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/company-logo.png"/>
+												</div>
+												<div class="listing-title">
+													<h4>Restaurant Dishwasher
+														<span class="job-type temporary">Temporary</span>
+
+													</h4>
+													<ul class="listing-icons">
+
+														<li><i class="ln ln-icon-Management"></i> King LLC</li>
+
+														<li><i class="ln ln-icon-Map2"></i> Miami</li>
 
 
-		<section class="ftco-section">
-    	<div class="container">
-    		<div class="row justify-content-center pb-4">
-          <div class="col-md-12 heading-section text-center ftco-animate">
-            <h2 class="mb-4">Best Place Destination</h2>
-          </div>
-        </div>
-        <div class="row">
-        	<div class="col-md-3 ftco-animate">
-        		<div class="project-destination">
-        			<a href="#" class="img" style="background-image: url(images/place-1.jpg);">
-        				<div class="text">
-        					<h3>Singapore</h3>
-        					<span>8 Tours</span>
-        				</div>
-        			</a>
-        		</div>
-        	</div>
-        	<div class="col-md-3 ftco-animate">
-        		<div class="project-destination">
-        			<a href="#" class="img" style="background-image: url(images/place-2.jpg);">
-        				<div class="text">
-        					<h3>Canada</h3>
-        					<span>2 Tours</span>
-        				</div>
-        			</a>
-        		</div>
-        	</div>
-        	<div class="col-md-3 ftco-animate">
-        		<div class="project-destination">
-        			<a href="#" class="img" style="background-image: url(images/place-3.jpg);">
-        				<div class="text">
-        					<h3>Thailand</h3>
-        					<span>5 Tours</span>
-        				</div>
-        			</a>
-        		</div>
-        	</div>
-        	<div class="col-md-3 ftco-animate">
-        		<div class="project-destination">
-        			<a href="#" class="img" style="background-image: url(images/place-4.jpg);">
-        				<div class="text">
-        					<h3>Autralia</h3>
-        					<span>5 Tours</span>
-        				</div>
-        			</a>
-        		</div>
-        	</div>
-        </div>
-    	</div>
-    </section>
+														<li><i class="ln ln-icon-Money-2"></i>
+															&#36;55000 - &#36;70000
+														</li>
 
-    <section class="ftco-section ftco-no-pt">
-    	<div class="container">
-    		<div class="row justify-content-center pb-4">
-          <div class="col-md-12 heading-section text-center ftco-animate">
-            <h2 class="mb-4">Tour Destination</h2>
-          </div>
-        </div>
-        <div class="row">
-        	<div class="col-md-4 ftco-animate">
-        		<div class="project-wrap">
-        			<a href="#" class="img" style="background-image: url(images/destination-1.jpg);"></a>
-        			<div class="text p-4">
-        				<span class="price">$300/person</span>
-        				<span class="days">8 Days Tour</span>
-        				<h3><a href="#">Bali, Indonesia</a></h3>
-        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-        				<ul>
-        					<li><span class="flaticon-shower"></span>2</li>
-        					<li><span class="flaticon-king-size"></span>3</li>
-        					<li><span class="flaticon-mountains"></span>Near Mountain</li>
-        				</ul>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4 ftco-animate">
-        		<div class="project-wrap">
-        			<a href="#" class="img" style="background-image: url(images/destination-2.jpg);"></a>
-        			<div class="text p-4">
-        				<span class="price">$300/person</span>
-        				<span class="days">10 Days Tour</span>
-        				<h3><a href="#">Bali, Indonesia</a></h3>
-        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-        				<ul>
-        					<li><span class="flaticon-shower"></span>2</li>
-        					<li><span class="flaticon-king-size"></span>3</li>
-        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-        				</ul>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4 ftco-animate">
-        		<div class="project-wrap">
-        			<a href="#" class="img" style="background-image: url(images/destination-3.jpg);"></a>
-        			<div class="text p-4">
-        				<span class="price">$300/person</span>
-        				<span class="days">7 Days Tour</span>
-        				<h3><a href="#">Bali, Indonesia</a></h3>
-        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-        				<ul>
-        					<li><span class="flaticon-shower"></span>2</li>
-        					<li><span class="flaticon-king-size"></span>3</li>
-        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-        				</ul>
-        			</div>
-        		</div>
-        	</div>
+													</ul>
 
-        	<div class="col-md-4 ftco-animate">
-        		<div class="project-wrap">
-        			<a href="#" class="img" style="background-image: url(images/destination-4.jpg);"></a>
-        			<div class="text p-4">
-        				<span class="price">$300/person</span>
-        				<span class="days">8 Days Tour</span>
-        				<h3><a href="#">Bali, Indonesia</a></h3>
-        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-        				<ul>
-        					<li><span class="flaticon-shower"></span>2</li>
-        					<li><span class="flaticon-king-size"></span>3</li>
-        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-        				</ul>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4 ftco-animate">
-        		<div class="project-wrap">
-        			<a href="#" class="img" style="background-image: url(images/destination-5.jpg);"></a>
-        			<div class="text p-4">
-        				<span class="price">$300/person</span>
-        				<span class="days">10 Days Tour</span>
-        				<h3><a href="#">Bali, Indonesia</a></h3>
-        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-        				<ul>
-        					<li><span class="flaticon-shower"></span>2</li>
-        					<li><span class="flaticon-king-size"></span>3</li>
-        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-        				</ul>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4 ftco-animate">
-        		<div class="project-wrap">
-        			<a href="#" class="img" style="background-image: url(images/destination-6.jpg);"></a>
-        			<div class="text p-4">
-        				<span class="price">$300/person</span>
-        				<span class="days">7 Days Tour</span>
-        				<h3><a href="#">Bali, Indonesia</a></h3>
-        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-        				<ul>
-        					<li><span class="flaticon-shower"></span>2</li>
-        					<li><span class="flaticon-king-size"></span>3</li>
-        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-        				</ul>
-        			</div>
-        		</div>
-        	</div>
-        </div>
-    	</div>
-    </section>
+												</div>
+											</a>
+										</li>
+										<!-- Listing -->
+										<li data-color="#f1630d" data-latitude="53.3795271"
+											data-longitude="-1.546126700000059">
+											<a class="left post-2492 job_listing type-job_listing status-publish hentry job_listing_region-new-york job_listing_category-healthcare job_listing_type-part-time job-type-part-time"
+											   data-color="#f1630d" data-latitude="53.3795271"
+											   data-longitude="-1.546126700000059"
+											   href="job/clinical-psychologist/index.html">
+												<div class="listing-logo">
+													<img alt="Rose Clinic" class="company_logo"
+														 src="http://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/placeholder.png"/>
+												</div>
+												<div class="listing-title">
+													<h4>Clinical psychologist
+														<span class="job-type part-time">Part Time</span>
 
-    <section class="ftco-section testimony-section bg-bottom" style="background-image: url(images/bg_3.jpg);">
-      <div class="container">
-        <div class="row justify-content-center pb-4">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2 class="mb-4">Tourist Feedback</h2>
-          </div>
-        </div>
-        <div class="row ftco-animate">
-          <div class="col-md-12">
-            <div class="carousel-testimony owl-carousel ftco-owl">
-              <div class="item">
-                <div class="testimony-wrap py-4">
-                  <div class="text">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                    	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
-		                    <span class="position">Marketing Manager</span>
-		                  </div>
-	                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap py-4">
-                  <div class="text">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                    	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
-		                    <span class="position">Marketing Manager</span>
-		                  </div>
-	                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap py-4">
-                  <div class="text">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
-                    	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
-		                    <span class="position">Marketing Manager</span>
-		                  </div>
-	                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap py-4">
-                  <div class="text">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                    	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
-		                    <span class="position">Marketing Manager</span>
-		                  </div>
-	                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap py-4">
-                  <div class="text">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                    	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
-		                    <span class="position">Marketing Manager</span>
-		                  </div>
-	                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+													</h4>
+													<ul class="listing-icons">
+
+														<li><i class="ln ln-icon-Management"></i> Rose Clinic</li>
+
+														<li><i class="ln ln-icon-Map2"></i> New York</li>
 
 
-    <section class="ftco-section">
-      <div class="container">
-      	<div class="row justify-content-center pb-4">
-          <div class="col-md-12 heading-section text-center ftco-animate">
-            <h2 class="mb-4">Recent Post</h2>
-          </div>
-        </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-              	<div class="d-flex align-items-center mb-4 topp">
-              		<div class="one">
-              			<span class="day">21</span>
-              		</div>
-              		<div class="two">
-              			<span class="yr">2019</span>
-              			<span class="mos">August</span>
-              		</div>
-              	</div>
-                <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-              	<div class="d-flex align-items-center mb-4 topp">
-              		<div class="one">
-              			<span class="day">21</span>
-              		</div>
-              		<div class="two">
-              			<span class="yr">2019</span>
-              			<span class="mos">August</span>
-              		</div>
-              	</div>
-                <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-              	<div class="d-flex align-items-center mb-4 topp">
-              		<div class="one">
-              			<span class="day">21</span>
-              		</div>
-              		<div class="two">
-              			<span class="yr">2019</span>
-              			<span class="mos">August</span>
-              		</div>
-              	</div>
-                <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+														<li><i class="ln ln-icon-Money-2"></i>
+															&#36;40000 - &#36;50000
+														</li>
+
+													</ul>
+
+												</div>
+											</a>
+										</li>
+										<!-- Listing -->
+										<li data-color="#186fc9" data-latitude="40.7668893"
+											data-longitude="-73.9790653">
+											<a class="left post-2490 job_listing type-job_listing status-publish has-post-thumbnail hentry job_listing_region-new-york job_listing_category-healthcare job_listing_type-full-time job-type-full-time"
+											   data-color="#186fc9" data-latitude="40.7668893"
+											   data-longitude="-73.9790653"
+											   href="job/senior-health-and-nutrition-advisor/index.html">
+												<div class="listing-logo">
+													<img alt="Telimed" class="company_logo"
+														 src="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/Untitled-1-Recovered-150x150_036a17cc6b1cbce4285ea7c4d6a34e16.png"/>
+												</div>
+												<div class="listing-title">
+													<h4>Senior Health and Nutrition Advisor
+														<span class="job-type full-time">Full Time</span>
+
+													</h4>
+													<ul class="listing-icons">
+
+														<li><i class="ln ln-icon-Management"></i> Telimed</li>
+
+														<li><i class="ln ln-icon-Map2"></i> New York</li>
 
 
+														<li><i class="ln ln-icon-Money-2"></i>
+															&#36;30000 - &#36;35000
+														</li>
+
+													</ul>
+
+												</div>
+											</a>
+										</li>
+										<!-- Listing -->
+										<li data-color="#53b427" data-latitude="52.5318835"
+											data-longitude="13.3883826">
+											<a class="left post-2487 job_listing type-job_listing status-publish hentry job_listing_region-miami job_listing_category-market-customer-research job_listing_category-sales-marketing job_listing_type-freelance job-type-freelance"
+											   data-color="#53b427" data-latitude="52.5318835"
+											   data-longitude="13.3883826"
+											   href="job/social-media-and-public-relation-executive/index.html">
+												<div class="listing-logo">
+													<img alt="Socielity" class="company_logo"
+														 src="http://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/placeholder.png"/>
+												</div>
+												<div class="listing-title">
+													<h4>Social Media and Public Relation Executive
+														<span class="job-type freelance">Freelance</span>
+
+													</h4>
+													<ul class="listing-icons">
+
+														<li><i class="ln ln-icon-Management"></i> Socielity</li>
+
+														<li><i class="ln ln-icon-Map2"></i> Miami</li>
+
+
+														<li><i class="ln ln-icon-Money-2"></i>
+															&#36;15000
+														</li>
+
+													</ul>
+
+												</div>
+											</a>
+										</li>
+
+									</ul>
+
+
+									<a class="load_more_jobs button centered" href="#"><i class="fa fa-plus-circle"></i>Show
+										More Jobs</a>
+									<div class="margin-bottom-55"></div>
+
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wpb_column vc_column_container vc_col-sm-4">
+				<div class="vc_column-inner ">
+					<div class="wpb_wrapper">
+						<h3 class="margin-bottom-5">Job Spotlight</h3>
+						<!-- Navigation -->
+						<div class="showbiz-navigation">
+							<div class="sb-navigation-left" id="showbiz_left_29"><i class="fa fa-angle-left"></i></div>
+							<div class="sb-navigation-right" id="showbiz_right_29"><i class="fa fa-angle-right"></i>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+
+						<!-- Showbiz Container -->
+						<div class="job-spotlight-car showbiz-container" data-autoplay="off" data-delay="5000"
+							 data-visible="[1,1,1,1]" id="job-spotlight">
+							<div class="showbiz" data-left="#showbiz_left_29" data-play="#showbiz_play_29"
+								 data-right="#showbiz_right_29">
+								<div class="overflowholder">
+									<ul>
+										<li>
+											<div class="job-spotlight">
+												<a href="job/clinical-psychologist/index.html"><h4>Clinical psychologist
+													<span class="job-type part-time">Part Time</span>
+												</h4></a>
+
+												<span class="ws-meta-company-name"><i class="fa fa-briefcase"></i> Rose Clinic</span>
+
+												<span class="ws-meta-job-location"><i class="fa fa-map-marker"></i>  New York</span>
+
+												<span class="ws-meta-rate">
+                                        <i class="fa fa-money"></i>
+                                        &#36;15- &#36;25 / hour                                    </span>
+
+
+												<span class="ws-meta-salary">
+                                        <i class="fa fa-money"></i>
+                                        &#36;40000  - &#36;50000                                    </span>
+
+
+												<p>The successful individual will be working within a small treatment
+													service with patients that have either Learning Disabilities and/or
+													mental ...
+												</p>
+												<a class="button" href="job/clinical-psychologist/index.html">Apply For
+													This Job</a>
+											</div>
+										</li>
+										<li>
+											<div class="job-spotlight">
+												<a href="job/senior-health-and-nutrition-advisor/index.html"><h4>Senior
+													Health and Nutrition Advisor
+													<span class="job-type full-time">Full Time</span>
+												</h4></a>
+
+												<span class="ws-meta-company-name"><i class="fa fa-briefcase"></i> Telimed</span>
+
+												<span class="ws-meta-job-location"><i class="fa fa-map-marker"></i>  New York</span>
+
+												<span class="ws-meta-rate">
+                                        <i class="fa fa-money"></i>
+                                        &#36;25- &#36;35 / hour                                    </span>
+
+
+												<span class="ws-meta-salary">
+                                        <i class="fa fa-money"></i>
+                                        &#36;30000  - &#36;35000                                    </span>
+
+
+												<p>Offer strategic and technical health and nutrition advice to
+													headquarters and field staff, as well as training and coaching
+													Telimed ...
+												</p>
+												<a class="button"
+												   href="job/senior-health-and-nutrition-advisor/index.html">Apply For
+													This Job</a>
+											</div>
+										</li>
+										<li>
+											<div class="job-spotlight">
+												<a href="job/social-media-and-public-relation-executive/index.html"><h4>
+													Social Media and Public Relation Executive
+													<span class="job-type freelance">Freelance</span>
+												</h4></a>
+
+												<span class="ws-meta-company-name"><i class="fa fa-briefcase"></i> Socielity</span>
+
+												<span class="ws-meta-job-location"><i class="fa fa-map-marker"></i>  Miami</span>
+
+												<span class="ws-meta-rate">
+                                        <i class="fa fa-money"></i>
+                                        &#36;25- &#36;35 / hour                                    </span>
+
+
+												<span class="ws-meta-salary">
+                                        <i class="fa fa-money"></i>
+                                        &#36;15000                                     </span>
+
+
+												<p>The Social Media &amp; PR Executive will be responsible for
+													increasing hotel marketing communication across a variety of social
+													media ...
+												</p>
+												<a class="button"
+												   href="job/social-media-and-public-relation-executive/index.html">Apply
+													For This Job</a>
+											</div>
+										</li>
+
+									</ul>
+									<div class="clearfix"></div>
+
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="vc_row wpb_row vc_row-fluid vc_custom_1521210767063 vc_row-has-fill vc_row-no-padding"
+			 data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true">
+			<div class="wpb_column vc_column_container vc_col-sm-12">
+				<div class="vc_column-inner ">
+					<div class="wpb_wrapper"><h3 class="centered headline margin-top-0 margin-bottom-25 "
+												 style="text-align:center;">What Our Users Say 😍<span
+							class="margin-top:25px;">We collect reviews from our users so you can get an honest opinion of what an experience with our website are really like!</span>
+					</h3>
+						<!-- Testimonials Carousel -->
+						<div class="fullwidth-carousel-container margin-top-20">
+							<div class="testimonial-carousel testimonials">
+
+								<!-- Item -->
+								<div class="fw-carousel-review">
+
+									<div class="testimonial-box">
+										<div class="testimonial"><p>I have already heard back about the internship I
+											applied through WorkScout, that&#8217;s the fastest job reply I&#8217;ve
+											ever gotten and it&#8217;s so much better than waiting weeks to hear
+											back.</p>
+										</div>
+									</div>
+									<div class="testimonial-author">
+										<img alt="" class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
+											 height="130" sizes="(max-width: 130px) 100vw, 130px"
+											 src="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-03.png"
+											 srcset="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-03.png 130w, https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-03-100x100.png 100w"
+											 width="130"/>                    <h4>John Smith <span>Jobseeker</span></h4>
+									</div>
+								</div>
+								<!-- Item -->
+								<div class="fw-carousel-review">
+
+									<div class="testimonial-box">
+										<div class="testimonial"><p>Nam eu eleifend nulla. Duis consectetur sit amet
+											risus sit amet venenatis. Pellentesque pulvinar ante a tincidunt placerat.
+											Donec dapibus efficitur arcu, a rhoncus lectus egestas elementum.</p>
+										</div>
+									</div>
+									<div class="testimonial-author">
+										<img alt="" class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
+											 height="130" sizes="(max-width: 130px) 100vw, 130px"
+											 src="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-01.png"
+											 srcset="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-01.png 130w, https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-01-100x100.png 100w"
+											 width="130"/>                    <h4>Tom Wilson <span>HR Specialist</span>
+									</h4>
+									</div>
+								</div>
+								<!-- Item -->
+								<div class="fw-carousel-review">
+
+									<div class="testimonial-box">
+										<div class="testimonial"><p>Nam eu eleifend nulla. Duis consectetur sit amet
+											risus sit amet venenatis. Pellentesque pulvinar ante a tincidunt placerat.
+											Donec dapibus efficitur arcu, a rhoncus lectus egestas elementum.</p>
+										</div>
+									</div>
+									<div class="testimonial-author">
+										<img alt="" class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
+											 height="130" sizes="(max-width: 130px) 100vw, 130px"
+											 src="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-02.png"
+											 srcset="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-02.png 130w, https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-02-100x100.png 100w"
+											 width="130"/>                    <h4>Anna Smith <span>Jobseeker</span></h4>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="vc_row-full-width vc_clearfix"></div>
+		<div class="vc_row wpb_row vc_row-fluid vc_custom_1521201754193 vc_row-has-fill vc_row-no-padding"
+			 data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true">
+			<div class="wpb_column vc_column_container vc_col-sm-12">
+				<div class="vc_column-inner ">
+					<div class="wpb_wrapper">
+						<!-- Flip banner -->
+						<a class="flip-banner parallax"
+						   data-background="https://workscout.in/wp-content/uploads/2018/03/all-categories-photo.jpg"
+						   data-color="#26ae62" data-color-opacity="0.92" data-img-height="1600" data-img-width="2500"
+						   href="#">
+
+							<div class="flip-banner-content">
+								<h2 class="flip-visible">Step inside and see for yourself!</h2>
+								<h2 class="flip-hidden">Get Started <i class="fa fa-angle-right"></i></h2>
+							</div>
+						</a>
+						<!-- Flip banner / End -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="vc_row-full-width vc_clearfix"></div>
+	</article>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+	(function($){
+
+
+	$(document).ready(function(){
+
+		$( '.sc-jobs #search_keywords' ).autocomplete({
+
+			source: function(req, response){
+				$.getJSON('https://workscout.in/wp-admin/admin-ajax.php'+'?callback=?&action=workscout_incremental_jobs_suggest', req, response);
+			},
+			select: function(event, ui) {
+				window.location.href=ui.item.link;
+			},
+			minLength: 3,
+		});
+	 });
+
+	})(this.jQuery);
+
+</script>
+<script type="text/javascript">
+	(function($){
+	$(document).ready(function(){
+
+		$( '.sc-resumes #search_keywords' ).autocomplete({
+
+			source: function(req, response){
+				$.getJSON('https://workscout.in/wp-admin/admin-ajax.php'+'?callback=?&action=workscout_incremental_resumes_suggest', req, response);
+			},
+			select: function(event, ui) {
+				window.location.href=ui.item.link;
+			},
+			minLength: 3,
+		});
+	 });
+
+	})(this.jQuery);
+
+</script>
 {% endblock %}

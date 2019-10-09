@@ -4,10 +4,10 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = 0
 
     lateinit var username: String
@@ -15,14 +15,20 @@ class User {
     var lastName: String? = null
 
     lateinit var password: String
-    @Transient private var passwordConfirm: String? = null
 
-    private var country: String = "IN"
-    private var state: String? = null
-    private var city: String? = null
-    private var pincode: Char = ' '
-    private var address: String? = null
-    private var DOB: Date? = null
-    private var joinedTime: Date? = null
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "ENUM('Male','Female')")
+    lateinit var gender: GENDER
 
+    var country: String = "IN"
+    var state: String? = null
+    var city: String? = null
+    var pincode: String? = null
+    var address: String? = null
+    lateinit var DOB: Date
+    lateinit var joinedTime: Date
+
+    enum class GENDER {
+        Male, Female;
+    }
 }

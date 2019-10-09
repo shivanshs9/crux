@@ -1,127 +1,642 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     {% block head %}
-        <title>{{ title }} | {{ app_title }}</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <link href="xmlrpc.php" rel="pingback">
 
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <title>{{ title }} | {{ app_title }}</title>
+    <script type="text/javascript">
+            window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"\/static\/js\/wp-emoji-release.min.js"}};
+            !function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
 
-        <link rel="stylesheet" href="/static/css/open-iconic-bootstrap.min.css">
-        <link rel="stylesheet" href="/static/css/animate.css">
+    </script>
+    <style type="text/css">
+            img.wp-smiley,
+            img.emoji {
+                display: inline !important;
+                border: none !important;
+                box-shadow: none !important;
+                height: 1em !important;
+                width: 1em !important;
+                margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
 
-        <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="/static/css/magnific-popup.css">
+    </style>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/purethemes-shortcodes/css/shortcodes.css'
+          id='purethemes-shortcodes-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/web-font-social-icons/css/icons.css'
+          id='wfsi-socialicons-css' media='all' rel='stylesheet' type='text/css'/>
+    <style id='wfsi-socialicons-inline-css' type='text/css'>
+            a.ptwsi-social-icon,
+            a.ptwsi-social-icon:visited,
+            .ptwsi_social-icons li a:visited,
+            .ptwsi_social-icons li a {
+                    color: #A0A0A0;
+                    background:  #F2F2F2;
+            }
 
-        <link rel="stylesheet" href="/static/css/aos.css">
+    </style>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:regular,500,600%7CLato:300,regular,700'
+          id='ot-google-fonts-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/css/dist/block-library/style.min.css'
+          id='wp-block-library-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/contact-form-7/includes/css/styles.css'
+          id='contact-form-7-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/revslider/public/assets/css/settings.css'
+          id='rs-plugin-settings-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/wp-pagenavi/pagenavi-css.css'
+          id='wp-pagenavi-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/wp-job-manager-alerts/assets/css/frontend.css'
+          id='job-alerts-frontend-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/wp-job-manager-apply-with-facebook/assets/css/frontend.css'
+          id='wp-job-manager-apply-with-facebook-styles-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/wp-job-manager-tags/assets/css/style.css'
+          id='wp-job-manager-tags-frontend-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/wp-job-manager-wc-paid-listings/assets/css/packages.css'
+          id='wc-paid-listings-packages-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/css/base.min.css'
+          id='workscout-base-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/css/responsive.min.css'
+          id='workscout-responsive-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/css/font-awesome.css'
+          id='workscout-font-awesome-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/style.css'
+          id='workscout-style-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/css/woocommerce.min.css'
+          id='workscout-woocommerce-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/js_composer/assets/css/js_composer.min.css'
+          id='js_composer_front-css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/kirki/assets/css/kirki-styles.css'
+          id='kirki-styles-workscout-css' media='all' rel='stylesheet' type='text/css'/>
+    <style id='kirki-styles-workscout-inline-css' type='text/css'>
+        #banner.with-transparent-header .search-container.sc-jobs{padding-top:171px;padding-bottom:171px;}#banner.jobs-search-banner .search-container.sc-jobs{padding-top:171px;padding-bottom:171px;}#banner.with-transparent-header.jobs-search-banner:before{background-color:rgba(42, 46, 50, 0.7);}#banner.jobs-search-banner:before{background-color:rgba(42, 46, 50, 0.7);}#banner.with-transparent-header .search-container.sc-resumes{padding-top:190px;padding-bottom:190px;}#banner.with-transparent-header.resumes-search-banner:before{background-color:rgba(42, 46, 50, 0.7);}body{font-family:Montserrat, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:27px;text-align:left;text-transform:none;color:#666;}#logo h1 a,#logo h2 a{font-family:"Varela Round", Helvetica, Arial, sans-serif;font-size:24px;font-weight:400;line-height:27px;text-align:left;text-transform:none;color:#666;}h1,h2,h3,h4,h5,h6{font-family:Montserrat, Helvetica, Arial, sans-serif;font-weight:400;}
 
-        <link rel="stylesheet" href="/static/css/ionicons.min.css">
+    </style>
+    <script src='/static/js/jquery-3.2.1.min.js' type='text/javascript'></script>
+    <script src='/static/js/jquery-migrate-3.0.1.min.js' type='text/javascript'></script>
+    <script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.tools.min.js'
+            type='text/javascript'></script>
+    <script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.revolution.min.js'
+            type='text/javascript'></script>
+    <link href="https://crux.com" rel="canonical"/>
+    <link href="/static/css/custom.css" rel="stylesheet"/>
+    <style type="text/css">
 
-        <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
-        <link rel="stylesheet" href="/static/css/jquery.timepicker.css">
+        .current-menu-item > a,a.button.gray.app-link.opened,ul.float-right li a:hover,.menu ul li.sfHover a.sf-with-ul,.menu ul li a:hover,a.menu-trigger:hover,
+        .current-menu-parent a,#jPanelMenu-menu li a:hover,.search-container button,.upload-btn,button,input[type="button"],input[type="submit"],a.button,.upload-btn:hover,#titlebar.photo-bg a.button.white:hover,a.button.dark:hover,#backtotop a:hover,.mfp-close:hover,.woocommerce-MyAccount-navigation li.is-active a,.woocommerce-MyAccount-navigation li.current-menu-item a,.tabs-nav li.active a, .tabs-nav-o li.active a,.accordion h3.active-acc,.highlight.color, .plan.color-2 .plan-price,.plan.color-2 a.button,.tp-leftarrow:hover,.tp-rightarrow:hover,
+        .pagination ul li a.current-page,.woocommerce-pagination .current,.pagination .current,.pagination ul li a:hover,.pagination-next-prev ul li a:hover,
+        .infobox,.load_more_resumes,.job-manager-pagination .current,.hover-icon,.comment-by a.reply:hover,.chosen-container .chosen-results li.highlighted,
+        .chosen-container-multi .chosen-choices li.search-choice,.list-search button,.checkboxes input[type=checkbox]:checked + label:before, .double-bounce1, .double-bounce2,
+        .widget_range_filter .ui-state-default,.tagcloud a:hover,.filter_by_tag_cloud a.active,.filter_by_tag_cloud a:hover,#wp-calendar tbody td#today,.footer-widget .tagcloud a:hover,.nav-links a:hover, .icon-box.rounded i:after, #mapnav-buttons a:hover,
+        .comment-by a.comment-reply-link:hover,#jPanelMenu-menu .current-menu-item > a, .button.color { background-color: #26ae61; }
 
-        <link rel="stylesheet" href="/static/css/flaticon.css">
-        <link rel="stylesheet" href="/static/css/icomoon.css">
-        <link rel="stylesheet" href="/static/css/style.css">
+        a,table td.title a:hover,table.manage-table td.action a:hover,#breadcrumbs ul li a:hover,#titlebar span.icons a:hover,.counter-box i,
+        .counter,#popular-categories li a i,.single-resume .resume_description.styled-list ul li:before,.list-1 li:before,.dropcap,.resume-titlebar span a:hover i,.resume-spotlight h4, .resumes-content h4,.job-overview ul li i,
+        .company-info span a:hover,.infobox a:hover,.meta-tags span a:hover,.widget-text h5 a:hover,.app-content .info span ,.app-content .info ul li a:hover,
+        table td.job_title a:hover,table.manage-table td.action a:hover,.job-spotlight span a:hover,.widget_rss li:before,.widget_rss li a:hover,
+        .widget_categories li:before,.widget-out-title_categories li:before,.widget_archive li:before,.widget-out-title_archive li:before,
+        .widget_recent_entries li:before,.widget-out-title_recent_entries li:before,.categories li:before,.widget_meta li:before,.widget_recent_comments li:before,
+        .widget_nav_menu li:before,.widget_pages li:before,.widget_categories li a:hover,.widget-out-title_categories li a:hover,.widget_archive li a:hover,
+        .widget-out-title_archive li a:hover,.widget_recent_entries li a:hover,.widget-out-title_recent_entries li a:hover,.categories li a:hover,
+        .widget_meta li a:hover,#wp-calendar tbody td a,.widget_nav_menu li a:hover,.widget_pages li a:hover,.resume-title a:hover, .company-letters a:hover, .companies-overview li li a:hover,.icon-box.rounded i, .icon-box i,
+        #titlebar .company-titlebar span a:hover{ color:  #26ae61; }
+        .icon-box.rounded i { border-color: #26ae61; }
+        .resumes li a:before,.resumes-list li a:before,.job-list li a:before,table.manage-table tr:before {	-webkit-box-shadow: 0px 1px 0px 0px rgba(38,174,97,0.7);	-moz-box-shadow: 0px 1px 0px 0px rgba(38,174,97,0.7);	box-shadow: 0px 1px 0px 0px rgba(38,174,97,0.7);}
+        #popular-categories li a:before {-webkit-box-shadow: 0px 0px 0px 1px rgba(38,174,97,0.7);-moz-box-shadow: 0px 0px 0px 1px rgba(38,174,97,0.7);box-shadow: 0px 0px 0px 1px rgba(38,174,97,0.7);}
+        table.manage-table tr:hover td,.resumes li:hover,.job-list li:hover { border-color: rgba(38,174,97,0.7); }
+
+        table.manage-table tr:hover td,.resumes li:hover,.job-list li:hover, #popular-categories li a:hover { background-color: rgba(38,174,97,0.05); }
+
+
+        .resumes.alternative li:before,
+        .category-small-box:hover { background-color: #26ae61; }
+        .category-small-box i { color: #26ae61; }
+
+         #logo img {
+            max-height: 65px;
+        }
+
+        #search_map {
+            height: 450px;
+        }
+
+            .woocommerce-ordering { display: none; }
+            .woocommerce-result-count { display: none; }
+
+
+        @media (max-width: 1290px) {
+        .sticky-header.cloned { display: none;}
+        #titlebar.photo-bg.with-transparent-header.single {
+            padding-top:200px !important;
+        }
+        }
+
+
+    </style>
+
+    <style type="text/css">
+            body {  }
+            h1, h2, h3, h4, h5, h6  {  }
+            #logo h1 a, #logo h2 a {  }
+            body .menu ul > li > a, body .menu ul li a {    }
+
+
+    </style>
+    <style>
+        .job-spotlight span.freelance, .map-box span.job-type.freelance,.new-layout.job_listings > li a span.job-type.freelance { color: #53b427; border: 1px solid #53b427; background-color: rgba( 83,180,39,0.07) }.new-layout.job_listings > li a.job_listing_type-freelance { border-left: 4px solid #53b427 }span.freelance { background-color: #53b427; }.job-spotlight span.full-time, .map-box span.job-type.full-time,.new-layout.job_listings > li a span.job-type.full-time { color: #186fc9; border: 1px solid #186fc9; background-color: rgba( 24,111,201,0.07) }.new-layout.job_listings > li a.job_listing_type-full-time { border-left: 4px solid #186fc9 }span.full-time { background-color: #186fc9; }.job-spotlight span.internship, .map-box span.job-type.internship,.new-layout.job_listings > li a span.job-type.internship { color: #e1d123; border: 1px solid #e1d123; background-color: rgba( 225,209,35,0.07) }.new-layout.job_listings > li a.job_listing_type-internship { border-left: 4px solid #e1d123 }span.internship { background-color: #e1d123; }.job-spotlight span.part-time, .map-box span.job-type.part-time,.new-layout.job_listings > li a span.job-type.part-time { color: #f1630d; border: 1px solid #f1630d; background-color: rgba( 241,99,13,0.07) }.new-layout.job_listings > li a.job_listing_type-part-time { border-left: 4px solid #f1630d }span.part-time { background-color: #f1630d; }.job-spotlight span.temporary, .map-box span.job-type.temporary,.new-layout.job_listings > li a span.job-type.temporary { color: #e12335; border: 1px solid #e12335; background-color: rgba( 225,35,53,0.07) }.new-layout.job_listings > li a.job_listing_type-temporary { border-left: 4px solid #e12335 }span.temporary { background-color: #e12335; }
+
+    </style>
+    <noscript>
+        <style>.woocommerce-product-gallery{ opacity: 1 !important; }</style>
+    </noscript>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" type="text/css"
+          href="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css"
+          media="screen">
+    <![endif]-->
+    <script type="text/javascript">
+        function setREVStartSize(e){
+            try{ e.c=jQuery(e.c);var i=jQuery(window).width(),t=9999,r=0,n=0,l=0,f=0,s=0,h=0;
+                if(e.responsiveLevels&&(jQuery.each(e.responsiveLevels,function(e,f){f>i&&(t=r=f,l=e),i>f&&f>r&&(r=f,n=e)}),t>r&&(l=n)),f=e.gridheight[l]||e.gridheight[0]||e.gridheight,s=e.gridwidth[l]||e.gridwidth[0]||e.gridwidth,h=i/s,h=h>1?1:h,f=Math.round(h*f),"fullscreen"==e.sliderLayout){var u=(e.c.width(),jQuery(window).height());if(void 0!=e.fullScreenOffsetContainer){var c=e.fullScreenOffsetContainer.split(",");if (c) jQuery.each(c,function(e,i){u=jQuery(i).length>0?u-jQuery(i).outerHeight(!0):u}),e.fullScreenOffset.split("%").length>1&&void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0?u-=jQuery(window).height()*parseInt(e.fullScreenOffset,0)/100:void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0&&(u-=parseInt(e.fullScreenOffset,0))}f=u}else void 0!=e.minHeight&&f<e.minHeight&&(f=e.minHeight);e.c.closest(".rev_slider_wrapper").css({height:f})
+            }catch(d){console.log("Failure at Presize of Slider:"+d)}
+        };
+
+    </script>
+    <style id="wp-custom-css" type="text/css">
+             .job_filters_links { display: none; }
+            .ui-menu li:last-child {
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+    </style>
+    <style data-type="vc_shortcodes-custom-css" type="text/css">
+        .vc_custom_1521229758973{margin-top: 3px !important;}.vc_custom_1521210767063{padding-top: 30px !important;padding-bottom: 50px !important;background-color: #f9f9f9 !important;}.vc_custom_1521201754193{margin-top: -35px !important;border-top-width: 0px !important;padding-top: 0px !important;}.vc_custom_1521213719082{margin-top: 10px !important;margin-bottom: -25px !important;}.vc_custom_1521227854183{margin-top: 10px !important;margin-bottom: 50px !important;}
+
+    </style>
+    <noscript>
+        <style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style>
+    </noscript>
+
+    <meta content="{{ _csrf.token }}" name="_csrf"/>
+    <meta content="{{ _csrf.headerName }}" name="_csrf_header"/>
     {% endblock %}
-  </head>
-  <body>
-  {% block body %}
-    {% block nav %}
-    {% endblock %}
+</head>
+<body class="home page-template page-template-template-home page-template-template-home-php page page-id-9 fullwidth group-blog workscout wpb-js-composer js-comp-ver-5.4.7 vc_responsive">
+{% block body %}
+<div id="wrapper">
+    <header class="default sticky-header transparent" id="main-header">
+        {% block header %}
+        <div class="container">
+            <div class="sixteen columns">
+                <!-- Logo -->
+                <div id="logo">
+                    <a href="/" rel="home" title="Crux"><img alt="Crux"
+                                                             src="https://workscout.wpengine.com/wp-content/uploads/2016/10/logo2.svg"/></a>
+                </div>
+                <!-- Mobile Navigation -->
+                <div class="mmenu-trigger">
+                    <button class="hamburger hamburger--collapse" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                    </button>
+                </div>
+                {% block nav %}
+                <!-- Menu -->
+                <nav class="menu" id="navigation">
+                    <ul class="menu" id="responsive">
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-9 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-2876"
+                            id="menu-item-2876">
+                            <a aria-current="page" href="index.html">Home</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-9 current_page_item menu-item-2875"
+                                    id="menu-item-2875"><a aria-current="page" href="index.html">Home #1</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2880"
+                                    id="menu-item-2880"><a href="home-5/index.html">Home #5</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5371"
+                                    id="menu-item-5371"><a href="home-resumes/index.html">Home #6 &#8211; Resumes</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2859"
+                            id="menu-item-2859"><a href="#">For Candidates</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2882"
+                                    id="menu-item-2882"><a href="browse-jobs/index.html">Browse Jobs</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8503"
+                                    id="menu-item-8503"><a href="browse-jobs-without-map/index.html">Browse Jobs No
+                                    Map</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2883"
+                                    id="menu-item-2883"><a href="browse-categories/index.html">Browse Categories</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2955"
+                                    id="menu-item-2955"><a href="companies/index.html">Browse Companies</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2884"
+                                    id="menu-item-2884"><a href="submit-resume/index.html">Submit Resume</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2885"
+                                    id="menu-item-2885"><a href="candidate-dashboard/index.html">Candidate Dashboard</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2886"
+                                    id="menu-item-2886"><a href="job-alerts/index.html">Job Alerts</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2891"
+                                    id="menu-item-2891"><a href="my-bookmarks/index.html">My Bookmarks</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2860"
+                            id="menu-item-2860"><a href="#">For Employers</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2889"
+                                    id="menu-item-2889"><a href="resumes/index.html">Browse Candidates</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2888"
+                                    id="menu-item-2888"><a href="post-a-job/index.html">Post a Job</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2887"
+                                    id="menu-item-2887"><a href="job-dashboard/index.html">Employer Dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2855"
+                            id="menu-item-2855"><a href="#">Pages</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2856"
+                                    id="menu-item-2856"><a href="job/grader-operator/index.html">Job Page</a></li>
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2857"
+                                    id="menu-item-2857"><a href="job/restaurant-team-member-crew/index.html">Job Page
+                                    Alternative</a></li>
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2858"
+                                    id="menu-item-2858"><a href="resume/john-smith/index.html">Resume Page</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2881"
+                                    id="menu-item-2881"><a href="shortcodes/index.html">Shortcodes</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2893"
+                                    id="menu-item-2893"><a href="woo-job-packages/index.html">Pricing Tables</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2890"
+                                    id="menu-item-2890"><a href="blog/index.html">Blog</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2892"
+                                    id="menu-item-2892"><a href="contact/index.html">Contact</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="float-right">
+                        {% if is_logged_in %}
+                        <li><a href="/profile/"><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="/auth/logout/"><i class="fa fa-lock"></i> Log Out</a></li>
+                        {% else %}
+                        <li><a class="small-dialog popup-with-zoom-anim" href="#signup-dialog"><i
+                                class="fa fa-user"></i> Sign Up</a></li>
+                        <li><a class="small-dialog popup-with-zoom-anim" href="#login-dialog"><i class="fa fa-lock"></i>
+                            Log In</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endblock %}
+                <div class="small-dialog zoom-anim-dialog mfp-hide apply-popup woocommerce-signup-popup"
+                     id="signup-dialog">
+                    <div class="small-dialog-headline">
+                        <h2>Sign Up</h2>
+                    </div>
+                    <div class="small-dialog-content woo-reg-box">
+                        <form action="/auth/register" class="register workscout_form" method="POST">
+                            <input name="{{ _csrf.parameterName }}" type="hidden" value="{{ _csrf.token }}"/>
+                            <p class="form-row form-row-wide">
+                                <label for="reg_email">Email address <span class="required">*</span>
+                                    <i class="ln ln-icon-Mail"></i><input class="input-text" id="reg_email" name="email"
+                                                                          type="email" value=""/>
+                                    <span class="form-error"></span>
+                                </label>
+                            </p>
+
+                            <p class="form-row form-row-wide">
+                                <label for="reg_username">Username <span class="required">*</span>
+                                    <i class="ln ln-icon-Face-Style4"></i><input class="input-text" id="reg_username"
+                                                                                 name="username" type="text" value=""/>
+                                    <span class="form-error"></span>
+                                </label>
+                            </p>
+
+                            <p class="form-row form-row-wide">
+                                <label for="reg_firstName">First Name <span class="required">*</span>
+                                    <i class="ln ln-icon-Male"></i><input class="input-text" id="reg_firstName"
+                                                                          name="firstName" type="text" value=""/>
+                                    <span class="form-error"></span>
+                                </label>
+
+                                <label for="reg_lastName">Last Name
+                                    <i class="ln ln-icon-Male"></i><input class="input-text" id="reg_lastName"
+                                                                          name="lastName" type="text" value=""/>
+                                    <span class="form-error"></span>
+                                </label>
+                            </p>
+
+                            <label for="reg_email">I&#039;m a..</label>
+                            <select class="input chosen-select" name="gender">
+                                <option selected value="Male">..a guy.</option>
+                                <option value="Female">...a girl.</option>
+                            </select>
+
+                            <p class="form-row form-row-wide">
+                                <label for="reg_password">Password <span class="required">*</span>
+                                    <i class="ln ln-icon-Lock-2"></i><input class="input-text" id="reg_password"
+                                                                            name="password" type="password" value=""/>
+                                    <span class="form-error"></span>
+                                </label>
+
+                                <label for="reg_passwordConfirm">Confirm Password <span class="required">*</span>
+                                    <i class="ln ln-icon-Lock-2"></i><input class="input-text" id="reg_passwordConfirm"
+                                                                            name="passwordConfirm" type="password"
+                                                                            value=""/>
+                                </label>
+                            </p>
+
+                            <label for="reg_email">I&#039;m looking..</label>
+                            <select class="input chosen-select" name="role">
+                                <option selected value="candidate">..for tests.</option>
+                                <option value="employer">...to conduct tests.</option>
+                            </select>
+
+                            <p class="form-row form-row-wide" id="register-company" style="display: none">
+                                <label for="reg_businessName">Company Name
+                                    <i class="ln ln-icon-Library"></i><input class="input-text" id="reg_businessName"
+                                                                             name="businessName" type="text" value=""/>
+                                    <span class="form-error"></span>
+                                </label>
+                            </p>
+                            <p class="form-row">
+                                <input class="button" name="register" type="submit" value="Register"/>
+                            </p>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="small-dialog zoom-anim-dialog mfp-hide apply-popup woocommerce-login-popup"
+                     id="login-dialog">
+                    <div class="small-dialog-headline">
+                        <h2>Login</h2>
+                    </div>
+                    <div class="small-dialog-content woo-reg-box">
+                        <form action="/auth/login" class="login workscout_form" method="POST">
+                            <input name="{{ _csrf.parameterName }}" type="hidden" value="{{ _csrf.token }}"/>
+                            <p class="form-row form-row-wide">
+                                <label for="username">Username<span class="required">*</span>
+                                    <i class="ln ln-icon-Male"></i><input class="input-text" id="username"
+                                                                          name="username" type="text" value=""/>
+                                    <span class="form-error"></span>
+                                </label>
+                            </p>
+                            <p class="form-row form-row-wide">
+                                <label for="password">Password <span class="required">*</span>
+                                    <i class="ln ln-icon-Lock-2"></i><input class="input-text" id="password"
+                                                                            name="password" type="password"/>
+                                    <span class="form-error"></span>
+                                </label>
+                            </p>
+                            <p class="form-row">
+                                <input class="button" name="login" type="submit" value="Login"/>
+                                <label class="inline" for="rememberme">
+                                    <input id="rememberme" name="rememberme" type="checkbox" value="forever"/> Remember
+                                    me
+                                </label>
+                            </p>
+                            <p class="lost_password">
+                                <a href="auth/password-reset/">Lost your password?</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </header>
+
+    <div class="clearfix"></div>
 
     {% block content %}
     {% endblock %}
 
-    {% block footer %}
-        <footer class="ftco-footer bg-bottom" style="background-image: url(images/footer-bg.jpg);">
-              <div class="container">
-                <div class="row mb-5">
-                  <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                      <h2 class="ftco-heading-2">Vacation</h2>
-                      <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                      <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md">
-                    <div class="ftco-footer-widget mb-4 ml-md-5">
-                      <h2 class="ftco-heading-2">Infromation</h2>
-                      <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
-                        <li><a href="#" class="py-2 d-block">General Enquiries</a></li>
-                        <li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
-                        <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-                        <li><a href="#" class="py-2 d-block">Refund Policy</a></li>
-                        <li><a href="#" class="py-2 d-block">Call Us</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md">
-                     <div class="ftco-footer-widget mb-4">
-                      <h2 class="ftco-heading-2">Experience</h2>
-                      <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Adventure</a></li>
-                        <li><a href="#" class="py-2 d-block">Hotel and Restaurant</a></li>
-                        <li><a href="#" class="py-2 d-block">Beach</a></li>
-                        <li><a href="#" class="py-2 d-block">Nature</a></li>
-                        <li><a href="#" class="py-2 d-block">Camping</a></li>
-                        <li><a href="#" class="py-2 d-block">Party</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                    	<h2 class="ftco-heading-2">Have a Questions?</h2>
-                    	<div class="block-23 mb-3">
-        	              <ul>
-        	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-        	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-        	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-        	              </ul>
-        	            </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12 text-center">
+    <div class="margin-top-45"></div>
 
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                  </div>
+    {% block footer %}
+    <!-- Footer
+    ================================================== -->
+    <div id="footer">
+        <!-- Main -->
+        <div class="container">
+            <div class="seven columns">
+                <aside class="footer-widget widget_text" id="text-3"><h4>About</h4>
+                    <div class="textwidget"><p>WorkScout is a fully functioning job board Theme for WordPress developed
+                        with the popular free WordPress Plugin WP Job Manager.</p>
+                        <a class="button"
+                           href="https://themeforest.net/item/workscout-job-board-wordpress-theme/13591801?ref=purethemes">Learn
+                            More</a></div>
+                </aside>
+            </div>
+            <div class="three columns">
+                <aside class="footer-widget widget_nav_menu" id="nav_menu-2"><h4>For Candidates</h4>
+                    <div class="menu-footer-for-candidates-container">
+                        <ul class="menu" id="menu-footer-for-candidates">
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2843"
+                                id="menu-item-2843"><a href="browse-jobs/index.html">Browse Jobs</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2844"
+                                id="menu-item-2844"><a href="browse-categories/index.html">Browse Categories</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2845"
+                                id="menu-item-2845"><a href="submit-resume/index.html">Submit Resume</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2846"
+                                id="menu-item-2846"><a href="candidate-dashboard/index.html">Candidate Dashboard</a>
+                            </li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2847"
+                                id="menu-item-2847"><a href="#">Job Alerts</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2848"
+                                id="menu-item-2848"><a href="#">My Bookmarks</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            <div class="three columns">
+                <aside class="footer-widget widget_nav_menu" id="nav_menu-3"><h4>For Employers</h4>
+                    <div class="menu-footer-for-employers-container">
+                        <ul class="menu" id="menu-footer-for-employers">
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2861"
+                                id="menu-item-2861"><a href="#">Browse Candidates</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2863"
+                                id="menu-item-2863"><a href="#">Employer Dashboard</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2862"
+                                id="menu-item-2862"><a href="#">Add Job</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2864"
+                                id="menu-item-2864"><a href="#">Job Packages</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            <div class="three columns">
+                <aside class="footer-widget widget_nav_menu" id="nav_menu-4"><h4>Other</h4>
+                    <div class="menu-footer-other-container">
+                        <ul class="menu" id="menu-footer-other">
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2877"
+                                id="menu-item-2877"><a href="shortcodes/index.html">Shortcodes</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2865"
+                                id="menu-item-2865"><a href="#">Job Page</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2866"
+                                id="menu-item-2866"><a href="#">Job Page Alternative</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2867"
+                                id="menu-item-2867"><a href="#">Resume Page</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2868"
+                                id="menu-item-2868"><a href="#">Blog</a></li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2872"
+                                id="menu-item-2872"><a href="contact/index.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="sixteen columns">
+
+                    <h4>Follow us</h4>
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#" target="_blank" title="Facebook"><i class="icon-facebook"></i></a>
+                        </li>
+                        <li><a class="twitter" href="#" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                        </li>
+                        <li><a class="gplus" href="#" target="_blank" title="GooglePlus"><i class="icon-gplus"></i></a>
+                        </li>
+                        <li><a class="linkedin" href="#" target="_blank" title="LinkdedIn"><i class="icon-linkedin"></i></a>
+                        </li>
+                    </ul>
+                    <div class="copyrights">&copy; Theme by Purethemes.net. All Rights Reserved.</div>
                 </div>
-              </div>
-            </footer>
+            </div>
+        </div>
+
+    </div>
+
     {% endblock %}
 
-    <!-- loader -->
-      <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <!-- Back To Top Button -->
+    <div id="backtotop"><a href="#"></a></div>
+    <div id="ajax_response"></div>
+</div>
+<!-- Wrapper / End -->
+
 
     {% block scripts %}
-      <script src="/static/js/jquery.min.js"></script>
-      <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
-      <script src="/static/js/popper.min.js"></script>
-      <script src="/static/js/bootstrap.min.js"></script>
-      <script src="/static/js/jquery.easing.1.3.js"></script>
-      <script src="/static/js/jquery.waypoints.min.js"></script>
-      <script src="/static/js/jquery.stellar.min.js"></script>
-      <script src="/static/js/owl.carousel.min.js"></script>
-      <script src="/static/js/jquery.magnific-popup.min.js"></script>
-      <script src="/static/js/aos.js"></script>
-      <script src="/static/js/jquery.animateNumber.min.js"></script>
-      <script src="/static/js/bootstrap-datepicker.js"></script>
-      <script src="/static/js/scrollax.min.js"></script>
-      <script src="/static/js/google-map.js"></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/js/jquery/ui/core.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/js/jquery/ui/widget.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/js/jquery/ui/position.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/js/jquery/ui/menu.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/js/wp-sanitize.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/js/wp-a11y.min.js'
+        type='text/javascript'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var uiAutocompleteL10n = {"noResults":"No results found.","oneResult":"1 result found. Use up and down arrow keys to navigate.","manyResults":"%d results found. Use up and down arrow keys to navigate.","itemSelected":"Item selected."};
+    /* ]]> */
 
-      <script src="/static/js/main.js"></script>
+</script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/js/jquery/ui/autocomplete.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/skip-link-focus-fix.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/js/jquery/ui/mouse.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/js/jquery/ui/slider.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/slick.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/chosen.jquery.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/hoverIntent.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/jquery.counterup.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/jquery.flexslider-min.js'
+        type='text/javascript'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var wssmap = {"marker_color":"#515151","single_zoom":"10"};
+    /* ]]> */
+
+</script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/workscout.single.map.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/mmenu.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/jquery.isotope.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/jquery.magnific-popup.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/jquery.superfish.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/jquery.themepunch.tools.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/jquery.themepunch.showbizpro.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/stacktable.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/waypoints.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/headroom.min.js'
+        type='text/javascript'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var ws = {"logo":"https:\/\/workscout.wpengine.com\/wp-content\/uploads\/2016\/10\/logo.svg","retinalogo":"https:\/\/workscout.wpengine.com\/wp-content\/uploads\/2016\/10\/logo.svg","transparentlogo":"https:\/\/workscout.wpengine.com\/wp-content\/uploads\/2016\/10\/logo2.svg","transparentretinalogo":"https:\/\/workscout.wpengine.com\/wp-content\/uploads\/2016\/10\/logo2.svg","ajaxurl":"\/wp-admin\/admin-ajax.php","theme_color":"#26ae61","woo_account_page":"https:\/\/workscout.in\/my-account\/","theme_url":"https:\/\/workscout.in\/wp-content\/themes\/workscout","header_breakpoint":"1290","no_results_text":"No results match"};
+    /* ]]> */
+
+</script>
+<script src='/static/js/custom.js' type='text/javascript'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var job_manager_chosen_multiselect_args = {"search_contains":"1"};
+    /* ]]> */
+
+</script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/wp-job-manager/assets/js/jquery-chosen/chosen.jquery.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/wp-job-manager-locations/assets/js/main.js'
+        type='text/javascript'></script>
+<script src='https://use.fontawesome.com/30858dc40a.js' type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js'
+        type='text/javascript'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' type='text/javascript'></script>
+<script type='text/javascript'>
+    WebFont.load({google:{families:['Montserrat:400:cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai', 'Varela Round:400:cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai']}});
+
+</script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js'
+        type='text/javascript'></script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/plugins/wp-job-manager/assets/js/jquery-deserialize/jquery.deserialize.js'
+        type='text/javascript'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var job_manager_ajax_filters = {"ajax_url":"\/jm-ajax\/%%endpoint%%\/","is_rtl":"0","lang":"","i18n_load_prev_listings":"Load previous listings","salary_min":"15000","salary_max":"70000","rate_min":"8","rate_max":"50","single_job_text":"job offer","plural_job_text":"job offers","currency":"$","currency_postion":"before"};
+    /* ]]> */
+
+</script>
+<script src='https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/themes/workscout/js/workscout-ajax-filters.min.js'
+        type='text/javascript'></script>
+{% block extra_scripts %}
+{% endblock %}
+
     {% endblock %}
-  {% endblock %}
-  </body>
+
+{% endblock %}
+</body>
 </html>

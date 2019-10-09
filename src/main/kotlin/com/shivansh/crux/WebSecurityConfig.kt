@@ -26,11 +26,11 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity?) {
         http?.let {
             it.authorizeRequests()
-                    .antMatchers("/", "/static/**", "/auth/register").permitAll()
+                    .antMatchers("/", "/static/**", "/auth/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
-                    .loginPage("/auth/login")
+                    .loginPage("/auth/login/")
                     .permitAll()
                     .and()
                     .logout()
