@@ -1,7 +1,7 @@
 package com.shivansh.crux.controller
 
 import com.shivansh.crux.InvalidDataException
-import com.shivansh.crux.InvalidRoleProvided
+import com.shivansh.crux.InvalidRoleProvidedException
 import com.shivansh.crux.model.BusinessMember
 import com.shivansh.crux.service.IBusinessService
 import com.shivansh.crux.service.IUserService
@@ -53,8 +53,9 @@ class BusinessAdminRestController : BaseController() {
     @ModelAttribute
     internal fun verifyAdmin(@PathVariable("id") businessId: Long) {
         val loggedInUser = userService.findByUsername(securityService.findLoggedInUsername()!!)
-        if (businessService.findByUserAndBusinessId(loggedInUser!!, businessId) == null)
-            throw InvalidRoleProvided("User is not given business admin")
+        businessService.findByUserAndBusinessId(loggedInUser!!, businessId).run {
+            if (this == null || this.position != BusinessMember.POSITION.Owner) throw InvalidRoleProvidedException("User is not given business owner")
+        }
     }
 
     internal fun getBusiness() = userService.findByUsername(securityService.findLoggedInUsername()!!)?.let {

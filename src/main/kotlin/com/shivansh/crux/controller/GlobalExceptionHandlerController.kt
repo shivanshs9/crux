@@ -1,7 +1,7 @@
 package com.shivansh.crux.controller
 
 import com.shivansh.crux.InvalidDataException
-import com.shivansh.crux.InvalidRoleProvided
+import com.shivansh.crux.InvalidRoleProvidedException
 import com.shivansh.crux.util.ApiError
 import com.shivansh.crux.util.RequestData
 import org.slf4j.LoggerFactory
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.context.request.WebRequest
 import org.springframework.web.util.WebUtils
-
 
 @ControllerAdvice
 class GlobalExceptionHandlerController {
@@ -35,8 +34,8 @@ class GlobalExceptionHandlerController {
         return handleExceptionInternal(ex, ApiError(ex.errors), HttpHeaders(), HttpStatus.BAD_REQUEST, request)
     }
 
-    @ExceptionHandler(InvalidRoleProvided::class)
-    fun handleInvalidRoleProvided(ex: InvalidRoleProvided, request: WebRequest): ResponseEntity<ApiError> {
+    @ExceptionHandler(InvalidRoleProvidedException::class)
+    fun handleInvalidRoleProvided(ex: InvalidRoleProvidedException, request: WebRequest): ResponseEntity<ApiError> {
         val data = RequestData().apply { invalidField("role", ex.message ?: "Invalid role provided") }
         return handleExceptionInternal(ex, ApiError(data.errors), HttpHeaders(), HttpStatus.FORBIDDEN, request)
     }

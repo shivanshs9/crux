@@ -7,4 +7,4 @@ import org.springframework.web.bind.annotation.ResponseStatus
 class InvalidDataException(val errors: Map<String, String>) : Exception("Invalid data provided.")
 
 @ResponseStatus(HttpStatus.FORBIDDEN)
-class InvalidRoleProvided(msg: String) : Exception(msg)
+class InvalidRoleProvidedException(msg: String) : Exception(msg)

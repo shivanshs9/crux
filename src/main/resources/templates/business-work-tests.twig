@@ -1,0 +1,94 @@
+{% extends 'base.twig' %}
+
+{% block header %}
+{% include 'header-nav.twig' %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Titlebar
+================================================== -->
+<div class="single" id="titlebar">
+    <div class="container">
+
+        <div class="sixteen columns">
+            <h1>{{ title }}</h1>
+            <nav id="breadcrumbs">
+                <ul>
+                    <!-- Breadcrumb NavXT 6.0.4 -->
+                    <li class="home"><span property="itemListElement" typeof="ListItem"><a class="home"
+                                                                                           href="/"
+                                                                                           property="item"
+                                                                                           title="Go to Crux."
+                                                                                           typeof="WebPage"><span
+                            property="name">Crux</span></a><meta content="1" property="position"></span></li>
+                    <li class="post post-page current-item"><span property="itemListElement" typeof="ListItem"><span
+                            property="name">Employee Dashboard</span><meta content="2" property="position"></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container full-width">
+    <article class="sixteen columns woocommerce-account post-2870 page type-page status-publish hentry" id="post-2870">
+
+        <nav class="woocommerce-MyAccount-navigation">
+            <ul>
+                <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard">
+                    <a href="/business/work/dashboard">Employee Dashboard</a>
+                </li>
+                <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders is-active">
+                    <a href="/business/work/past-tests">Past Tests</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="woocommerce-MyAccount-content">
+            <div id="job-manager-job-dashboard">
+                <div class="details-headline">
+                    <h2>Past Tests - {{ business.name }}</h2>
+                </div>
+                <div class="details-wrapper">
+                    <ul class="job_listings job-list full  new-layout hide-desc">
+                        {% for test in tests %}
+                        <li data-color="#e12335">
+                            <a class="left job_listing test-link" href="/tests/{{ test.id }}/details">
+                                <div class="listing-logo">
+                                </div>
+                                <div class="listing-title">
+                                    <h4>{{ test.name }}
+                                        <span class="job-type part-time">See Details</span>
+                                    </h4>
+                                    <ul class="listing-icons">
+                                        <li title="Start Time"><i class="ln ln-icon-Alarm"></i> {{ test.startTimeString
+                                            }}
+                                        </li>
+                                        <li title="Test Duration"><i class="ln ln-icon-Alarm"></i> {{
+                                            test.durationString }}
+                                        </li>
+                                        <li title="Registration count"><i class="ln ln-icon-Business-Mens"></i> {{
+                                            test.registrationCount }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+    ajaxSubmitForm('#new-test-form', {
+        success: function (data) {
+            window.location.reload();
+        }
+    });
+</script>
+{% endblock %}

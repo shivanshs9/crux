@@ -229,4 +229,11 @@ CREATE TABLE IF NOT EXISTS passed_test_case
   FOREIGN KEY (submissionId) REFERENCES coding_submission(id)
 );
 
---SET FOREIGN_KEY_CHECKS = 1;
+# SET FOREIGN_KEY_CHECKS = 1;
+
+CREATE VIEW test_with_registrations AS (
+    SELECT t.*, COUNT(pt.id) registrationCount
+    FROM test t
+             LEFT OUTER JOIN participant pt ON t.id = pt.testId
+    GROUP BY t.id
+);
