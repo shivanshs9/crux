@@ -1,0 +1,124 @@
+{% extends 'base.twig' %}
+
+{% block header %}
+{% include 'header-nav.twig' %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Titlebar
+================================================== -->
+<div class="single" id="titlebar">
+    <div class="container">
+
+        <div class="sixteen columns">
+            <h1>Manage Question</h1>
+            <nav id="breadcrumbs">
+                <ul>
+                    <!-- Breadcrumb NavXT 6.0.4 -->
+                    <li class="home"><span property="itemListElement" typeof="ListItem"><a class="home"
+                                                                                           href="/"
+                                                                                           property="item"
+                                                                                           title="Go to Crux."
+                                                                                           typeof="WebPage"><span
+                            property="name">Crux</span></a><meta content="1" property="position"></span></li>
+                    <li class="post post-page current-item"><span property="itemListElement" typeof="ListItem"><span
+                            property="name">Manage Question</span><meta content="2" property="position"></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container full-width">
+    <article class="sixteen columns woocommerce-account post-2870 page type-page status-publish hentry" id="post-2870">
+        <nav class="woocommerce-MyAccount-navigation">
+            <ul>
+                <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard">
+                    <a href="/business/work/tests/{{ test.id }}">Details</a>
+                </li>
+                <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders is-active">
+                    <a href="/business/work/tests/{{ test.id }}/questions">Questions</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="woocommerce-MyAccount-content">
+            <div id="job-manager-job-dashboard">
+                <div class="details-headline">
+                    <h2>MCQ Questions - {{ length(mcq_questions) }}</h2>
+                </div>
+                <div class="details-wrapper">
+                    <ul class="job_listings job-list full  new-layout hide-desc">
+                        {% for question in mcq_questions %}
+                        <li data-color="#e12335">
+                            <a class="left job_listing test-link" href="/business/work/tests/{{ test.id }}/questions/mcq/{{ question.id }}">
+                                <div class="listing-logo">
+                                </div>
+                                <div class="listing-title">
+                                    <h4>{{ question.title }}
+                                        <span class="job-type part-time">See Details</span>
+                                    </h4>
+                                    <ul class="listing-icons">
+                                        <li title="Score"><i class="ln ln-icon-Numbering-List"></i> {{ question.marks }}</li>
+                                        <li title="Test Duration"><i class="ln ln-icon-Alarm"></i> {{ question.createdTimeString }}</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <a class="small-dialog popup-with-zoom-anim button centered" href="#new-mcq-dialog"><i
+                            aria-hidden="true" class="fa fa-plus-circle"></i>New Question</a>
+                    <div class="small-dialog zoom-anim-dialog mfp-hide apply-popup woocommerce-add-popup"
+                         id="new-mcq-dialog">
+                        <div class="small-dialog-headline">
+                            <h2>Create MCQ Question</h2>
+                        </div>
+                        <div class="small-dialog-content woo-reg-box">
+                            <form action="/tests/{{ test.id }}/questions/mcq" class="workscout_form" id="new-mcq-form"
+                                  method="POST">
+                                <input name="{{ _csrf.parameterName }}" type="hidden" value="{{ _csrf.token }}"/>
+                                <p class="form-row form-row-wide">
+                                    <label for="mcqName">Title <span class="required">*</span>
+                                        <i class="ln ln-icon-File-HorizontalText"></i>
+                                        <input class="input-text" id="mcqName" name="title" type="text" value=""/>
+                                        <span class="form-error"></span>
+                                    </label>
+                                </p>
+                                <p class="form-row form-row-wide">
+                                    <label for="mcqDescription">Description
+                                        <i class="ln ln-icon-File-HorizontalText"></i>
+                                        <input class="input-text" id="mcqDescription" name="description" type="text" value=""/>
+                                        <span class="form-error"></span>
+                                    </label>
+                                </p>
+                                <p class="form-row form-row-wide">
+                                    <label for="mcqMarks">Marks
+                                        <i class="ln ln-icon-Numbering-List"></i>
+                                        <input class="input-text" id="mcqMarks" name="marks" type="number" />
+                                        <span class="form-error"></span>
+                                    </label>
+                                </p>
+                                <p class="form-row">
+                                    <input class="button" name="add" type="submit" value="Create"/>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+    ajaxSubmitForm('#new-mcq-form', {
+        success: function (data) {
+            window.location.reload();
+        }
+    });
+</script>
+{% endblock %}

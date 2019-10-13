@@ -6,3 +6,18 @@
 .pointer {
     cursor: pointer;
 }
+
+.list-right-end {
+    margin-right: 0;
+    font-size: 12px;
+    color: #888;
+    padding: 4px 8px;
+    line-height: 18px;
+    font-weight: 500;
+    position: absolute;
+    right: 0;
+    white-space: nowrap;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}

@@ -11,10 +11,13 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 interface ITestService {
+    fun findTestWithRegistrationCountById(id: Long): ITest?
     fun findUpcomingTests(count: Int): List<Test>
     fun findUpcomingTestsByBusiness(user: User, business: Business): List<Test>
     fun findPastTestsByBusiness(business: Business): List<ITest>
     fun createNewBusinessTest(businessMember: BusinessMember, data: TestDetailsData): Test?
+    fun updateTestWithData(testId: Long, data: TestDetailsData): Test?
+    fun findProblemSetterForTestAndUser(testId: Long, userId: Long): ProblemSetter?
 }
 
 @Service
@@ -41,6 +44,14 @@ class TestService : ITestService {
         }
     }
 
+    internal fun findTestById(id: Long): Test? = testRepository.findById(id).run {
+        if (isPresent) get() else null
+    }
+
+    override fun findTestWithRegistrationCountById(id: Long): ITest? = testWithRegistrationCountRepository.findById(id).run {
+        if (isPresent) get() else null
+    }
+
     override fun findUpcomingTests(count: Int): List<Test> = testRepository.findByStartTimeGreaterThan(Calendar.getInstance().time, count).toList()
 
     override fun findUpcomingTestsByBusiness(user: User, business: Business): List<Test> {
@@ -50,6 +61,15 @@ class TestService : ITestService {
 
     override fun findPastTestsByBusiness(business: Business): List<ITest> {
         return testWithRegistrationCountRepository.findByBusinessMemberIdsAndStartTimeLessThanEqualWithRegistrationCount(getBusinessMemberIds(business), Calendar.getInstance().time).toList()
+    }
+
+    override fun updateTestWithData(testId: Long, data: TestDetailsData): Test? = findTestById(testId)?.run {
+        data.name?.let { name = it }
+        data.startDateTime?.let { startTime = it }
+        data.endDateTime?.let { endTime = it }
+        data.summary?.let { summary = it }
+        data.description?.let { description = it }
+        testRepository.save(this)
     }
 
     override fun createNewBusinessTest(businessMember: BusinessMember, data: TestDetailsData): Test {
@@ -73,4 +93,6 @@ class TestService : ITestService {
         problemSetterRepository.save(problemSetter)
         return test
     }
+
+    override fun findProblemSetterForTestAndUser(testId: Long, userId: Long): ProblemSetter? = problemSetterRepository.findByTestIdAndUserId(testId, userId)
 }

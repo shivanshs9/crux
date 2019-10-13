@@ -1,5 +1,6 @@
 package com.shivansh.crux.controller
 
+import com.shivansh.crux.DataNotFoundException
 import com.shivansh.crux.InvalidDataException
 import com.shivansh.crux.InvalidRoleProvidedException
 import com.shivansh.crux.util.ApiError
@@ -38,6 +39,12 @@ class GlobalExceptionHandlerController {
     fun handleInvalidRoleProvided(ex: InvalidRoleProvidedException, request: WebRequest): ResponseEntity<ApiError> {
         val data = RequestData().apply { invalidField("role", ex.message ?: "Invalid role provided") }
         return handleExceptionInternal(ex, ApiError(data.errors), HttpHeaders(), HttpStatus.FORBIDDEN, request)
+    }
+
+    @ExceptionHandler(DataNotFoundException::class)
+    fun handleDataNotFoundException(ex: DataNotFoundException, request: WebRequest): ResponseEntity<ApiError> {
+        val data = RequestData().apply { invalidField("data", ex.message ?: "Data not found") }
+        return handleExceptionInternal(ex, ApiError(data.errors), HttpHeaders(), HttpStatus.NOT_FOUND, request)
     }
 
     /**

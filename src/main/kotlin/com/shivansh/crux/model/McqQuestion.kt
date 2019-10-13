@@ -1,5 +1,7 @@
 package com.shivansh.crux.model
 
+import com.shivansh.crux.util.formatCompleteDate
+import java.util.*
 import javax.persistence.*
 
 @Entity
@@ -12,6 +14,7 @@ class McqQuestion {
     lateinit var title: String
     lateinit var description: String
     var marks: Int = 0
+    lateinit var createdTime: Date
 
     @ManyToOne
     @JoinColumn(name = "testId")
@@ -20,4 +23,7 @@ class McqQuestion {
     @ManyToOne
     @JoinColumn(name = "problemSetterId")
     lateinit var problemSetter: ProblemSetter
+
+    val createdTimeString: String
+        get() = formatCompleteDate(createdTime)
 }

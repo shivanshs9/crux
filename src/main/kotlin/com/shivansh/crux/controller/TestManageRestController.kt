@@ -46,6 +46,15 @@ class TestManageRestController : BaseController() {
             data
         } else throw InvalidDataException(data.errors)
     }
+
+    @PatchMapping("/{testId:[\\d]+}")
+    fun updateTestDetails(@PathVariable("testId") testId: Long, @ModelAttribute data: TestDetailsData): BaseResponseData {
+        data.validate()
+        return if (data.isValid()) {
+            testService.updateTestWithData(testId, data)
+            data
+        } else throw InvalidDataException(data.errors)
+    }
 }
 
 data class TestDetailsData(

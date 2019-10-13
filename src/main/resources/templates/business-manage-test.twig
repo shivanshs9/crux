@@ -12,7 +12,7 @@
     <div class="container">
 
         <div class="sixteen columns">
-            <h1>Employee Dashboard</h1>
+            <h1>Manage Test</h1>
             <nav id="breadcrumbs">
                 <ul>
                     <!-- Breadcrumb NavXT 6.0.4 -->
@@ -36,10 +36,10 @@
         <nav class="woocommerce-MyAccount-navigation">
             <ul>
                 <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard is-active">
-                    <a href="/business/work/dashboard">Employee Dashboard</a>
+                    <a href="/business/work/tests/{{ test.id }}">Details</a>
                 </li>
                 <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders">
-                    <a href="/business/work/tests">Past Tests</a>
+                    <a href="/business/work/tests/{{ test.id }}/questions">Questions</a>
                 </li>
             </ul>
         </nav>
@@ -47,57 +47,19 @@
         <div class="woocommerce-MyAccount-content">
             <div id="job-manager-job-dashboard">
                 <div class="details-headline">
-                    <h2>Upcoming Tests - {{ business.name }}</h2>
+                    <h2>{{ test.name }}</h2>
                 </div>
                 <div class="details-wrapper">
-                    <ul class="job_listings job-list full  new-layout hide-desc">
-                        {% for test in tests %}
-                        <li data-color="#e12335">
-                            <a %} %} class="left job_listing test-link" endif href="/business/work/tests/{{ test.id }}"
-                               if test.isUserSetter {% {%>
-                                <div class="listing-logo">
-                                </div>
-                                <div class="listing-title">
-                                    <h4>{{ test.name }}
-                                        {% if test.isUserSetter %}
-                                        <span class="job-type part-time edit-test">Edit Test</span>
-                                        {% else %}
-                                        <span class="job-type part-time set-problems pointer"
-                                              data-href="/business/{{ business.id }}/tests/{{ test.id }}/setters">Set Problems</span>
-                                        {% endif %}
-                                    </h4>
-                                    <ul class="listing-icons">
-                                        <li title="Start Time"><i class="ln ln-icon-Alarm"></i> {{ test.startTimeString
-                                            }}
-                                        </li>
-                                        <li title="End Time"><i class="ln ln-icon-Alarm"></i> {{ test.endTimeString }}
-                                        </li>
-                                        <li title="Test Duration"><i class="ln ln-icon-Alarm"></i> {{
-                                            test.durationString }}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                    <a class="small-dialog popup-with-zoom-anim button centered" href="#new-dialog"><i
-                            aria-hidden="true" class="fa fa-plus-circle"></i>New Test</a>
-                    <div class="small-dialog zoom-anim-dialog mfp-hide apply-popup woocommerce-add-popup"
-                         id="new-dialog">
-                        <div class="small-dialog-headline">
-                            <h2>Create New Test</h2>
-                        </div>
                         <div class="small-dialog-content woo-reg-box">
-                            <form action="/business/{{ business.id }}/tests/" class="workscout_form" id="new-test-form"
-                                  method="POST">
+                            <form action="/business/{{ business.id }}/tests/{{ test.id }}" class="workscout_form" id="update-test-form"
+                                  method="PATCH">
                                 <input name="{{ _csrf.parameterName }}" type="hidden" value="{{ _csrf.token }}"/>
                                 <p class="form-row form-row-wide">
                                     <label for="testname">Name <span class="required">*</span>
                                         <i class="ln ln-icon-File-HorizontalText"></i><input class="input-text"
                                                                                              id="testname"
                                                                                              name="name" type="text"
-                                                                                             value=""/>
+                                                                                             value="{{ test.name }}"/>
                                         <span class="form-error"></span>
                                     </label>
                                 </p>
@@ -105,7 +67,7 @@
                                     <label for="startTime">Start Time<span class="required">*</span>
                                         <i class="ln ln-icon-Alarm"></i><input class="input-text" id="startTime"
                                                                                name="startTime" type="datetime-local"
-                                                                               value=""/>
+                                                                               value="{{ test.startTime }}"/>
                                         <span class="form-error"></span>
                                     </label>
                                 </p>
@@ -113,7 +75,7 @@
                                     <label for="endTime">End Time<span class="required">*</span>
                                         <i class="ln ln-icon-Alarm"></i><input class="input-text" id="endTime"
                                                                                name="endTime" type="datetime-local"
-                                                                               value=""/>
+                                                                               value="{{ test.endTime }}"/>
                                         <span class="form-error"></span>
                                     </label>
                                 </p>
@@ -122,22 +84,21 @@
                                         <i class="ln ln-icon-File-HorizontalText"></i><input class="input-text"
                                                                                              id="summary"
                                                                                              name="summary" type="text"
-                                                                                             value=""/>
+                                                                                             value="{{ test.summary }}"/>
                                         <span class="form-error"></span>
                                     </label>
                                 </p>
                                 <p class="form-row form-row-wide">
                                     <label for="description">Description
-                                        <textarea class="input-text" id="description" name="description"></textarea>
+                                        <textarea class="input-text" id="description" name="description">{{ test.description }}</textarea>
                                         <span class="form-error"></span>
                                     </label>
                                 </p>
                                 <p class="form-row">
-                                    <input class="button" name="add" type="submit" value="Create"/>
+                                    <input class="button" name="add" type="submit" value="Update"/>
                                 </p>
                             </form>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -147,13 +108,10 @@
 
 {% block extra_scripts %}
 <script type="text/javascript">
-    ajaxSubmitForm('#new-test-form', {
+    ajaxSubmitForm('#update-test-form', {
         success: function (data) {
             window.location.reload();
         }
-    });
-    $('.edit-test').on('click', function (e) {
-        return false;
     });
 </script>
 {% endblock %}

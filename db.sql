@@ -123,6 +123,7 @@ CREATE TABLE IF NOT EXISTS coding_question
   id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(56) NOT NULL,
   problemStatement VARCHAR(512) NOT NULL,
+  createdTime DATETIME NOT NULL,
   marks INT NOT NULL,
   testId INT NOT NULL,
   problemSetterId INT NOT NULL,
@@ -136,12 +137,13 @@ CREATE TABLE IF NOT EXISTS mcq_question
   id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(56) NOT NULL,
   description VARCHAR(512) NOT NULL,
+  createdTime DATETIME NOT NULL,
   marks INT NOT NULL,
   testId INT NOT NULL,
-  problemSetter INT NOT NULL,
+  problemSetterId INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (testId) REFERENCES test(id),
-  FOREIGN KEY (problemSetter) REFERENCES problem_setter(id)
+  FOREIGN KEY (problemSetterId) REFERENCES problem_setter(id)
 );
 
 CREATE TABLE IF NOT EXISTS test_case

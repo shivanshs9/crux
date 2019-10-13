@@ -8,3 +8,6 @@ class InvalidDataException(val errors: Map<String, String>) : Exception("Invalid
 
 @ResponseStatus(HttpStatus.FORBIDDEN)
 class InvalidRoleProvidedException(msg: String) : Exception(msg)
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+class DataNotFoundException(msg: String?): Exception(msg ?: "Data not found")

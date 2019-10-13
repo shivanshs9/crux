@@ -449,8 +449,9 @@
             var data = $(this).serialize();
             var button = $(this).find('input[type=submit]');
             toggleSubmitButton(button, false);
-            $.post({
+            $.ajax({
                 url: form.attr('action'),
+                method: form.attr('method'),
                 data: data,
                 async: true,
                 dataType: 'json',
