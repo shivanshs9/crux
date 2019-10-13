@@ -338,81 +338,41 @@ $(window).bind("load resize",function(){
           $(selector).chosen(config[selector]);
         }
 
-
-
-
     /*----------------------------------------------------*/
     /*  Magnific Popup
     /*----------------------------------------------------*/
 
-            $('body').magnificPopup({
-                type: 'image',
-                delegate: 'a.mfp-gallery',
+        $('body').magnificPopup({
+            type: 'image',
+            delegate: 'a.mfp-gallery',
 
-                fixedContentPos: true,
-                fixedBgPos: true,
+            fixedContentPos: true,
+            fixedBgPos: true,
 
-                overflowY: 'auto',
+            overflowY: 'auto',
 
-                closeBtnInside: true,
-                preloader: true,
+            closeBtnInside: true,
+            preloader: true,
 
-                removalDelay: 0,
-                mainClass: 'mfp-fade',
+            removalDelay: 0,
+            mainClass: 'mfp-fade',
 
-                gallery:{enabled:true},
+            gallery: {enabled: true},
 
-                callbacks: {
-                    buildControls: function() {
-                         this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
-                    }
+            callbacks: {
+                buildControls: function () {
+                    this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
                 }
-            });
+            }
+        });
 
-
-        $(document).on( 'submit', '.small-dialog-content.woo-reg-box form.login, .small-dialog-content.woo-reg-box form.register', function(e) {
-            $('input').css({ "border": '0'});
-            $('.form-error').text('')
-            e.preventDefault();
-            var form = $(this);
-            var error = false;
-
-            var data = $(this).serialize();
-            var button = $(this).find('input[type=submit]');
-
-            $(button).css('backgroundColor','#ddd');
-
-            console.log(data)
-
-            var $response = $( '#ajax-response' );
-
-            $.post({
-                url: form.attr('action'),
-                data: data,
-                async: true,
-                dataType: 'json',
-                headers: {
-                    'Access-Control-Allow-Credentials': true
-                },
-                success: function(data) {
-                    if (data.redirectTo) {
-                        window.location.href = data.redirectTo;
-                    }
-                    $.magnificPopup.close();
-                },
-                complete: function(e) {
-                  $(button).css('backgroundColor', ws.theme_color);
-                },
-                error: function(response) {
-                    var data = response.responseJSON;
-                    var errors = data.errors;
-                    for (let field in errors) {
-                        let elem = form.find('input[name=' + field + ']');
-                        elem.next('.form-error').text(errors[field]);
-                        elem.css({ "border": '#FF0000 1px solid'});
-                    }
+        ajaxSubmitForm('.small-dialog-content.woo-reg-box form.login, .small-dialog-content.woo-reg-box form.register', {
+            success: function (form, data) {
+                if (data.redirectTo) {
+                    window.location.href = data.redirectTo;
                 }
-            });
+                $.magnificPopup.close();
+            }
         });
 
         $(document).on('change', 'form.register select[name=role]', function(e) {

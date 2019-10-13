@@ -15,6 +15,11 @@ CREATE TABLE IF NOT EXISTS business
 (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(30) NOT NULL UNIQUE,
+  hq_country CHAR(2) NOT NULL DEFAULT 'IN',
+  hq_state VARCHAR(30) NULL,
+  hq_city VARCHAR(30) NULL,
+  hq_address VARCHAR(128) NULL,
+  category VARCHAR(26) NULL,
   logo VARCHAR(256) NULL,
   createdTime DATETIME NOT NULL,
   PRIMARY KEY (id)
@@ -30,7 +35,6 @@ CREATE TABLE IF NOT EXISTS user
   state VARCHAR(30) NULL,
   city VARCHAR(30) NULL,
   gender ENUM('Male', 'Female') NOT NULL,
-  pincode CHAR(6) NULL,
   password VARCHAR(512) NOT NULL,
   address VARCHAR(128) NULL,
   DOB DATE NULL,

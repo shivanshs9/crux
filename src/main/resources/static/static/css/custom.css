@@ -2,3 +2,7 @@
     font-size: 0.75rem;
     color: #FF0000
 }
+
+.pointer {
+    cursor: pointer;
+}

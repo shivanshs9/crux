@@ -1,9 +1,7 @@
 package com.shivansh.crux.util
 
 interface IRequestData {
-    val errors: Map<String, String>
-
-    fun clean() {}
+    fun clean()
     fun validate() {
         clean()
     }
@@ -13,6 +11,8 @@ interface IRequestData {
 
 open class RequestData : IRequestData, BaseResponseData {
     override val errors: MutableMap<String, String> = mutableMapOf()
+
+    override fun clean() {}
 
     fun invalidField(field: String, error: String) {
         errors[field] = error

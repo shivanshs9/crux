@@ -1,0 +1,138 @@
+{% extends 'base.twig' %}
+
+{% block header %}
+{% include 'header-nav.twig' %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Titlebar
+================================================== -->
+<div class="single" id="titlebar">
+    <div class="container">
+
+        <div class="sixteen columns">
+            <h1>Members Listing</h1>
+            <nav id="breadcrumbs">
+                <ul>
+                    <!-- Breadcrumb NavXT 6.0.4 -->
+                    <li class="home"><span property="itemListElement" typeof="ListItem"><a class="home"
+                                                                                           href="/"
+                                                                                           property="item"
+                                                                                           title="Go to Crux."
+                                                                                           typeof="WebPage"><span
+                            property="name">Crux</span></a><meta content="1" property="position"></span></li>
+                    <li class="post post-page current-item"><span property="itemListElement" typeof="ListItem"><span
+                            property="name">Members Listing</span><meta content="2" property="position"></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container full-width">
+    <article class="sixteen columns woocommerce-account post-2870 page type-page status-publish hentry" id="post-2870">
+
+        <nav class="woocommerce-MyAccount-navigation">
+            <ul>
+                <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard">
+                    <a href="/business/admin/dashboard">Business Details</a>
+                </li>
+                <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders is-active">
+                    <a href="/business/admin/members">Members</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="woocommerce-MyAccount-content">
+            <div id="job-manager-job-dashboard">
+                <div class="members-headline">
+                    <h2>Members</h2>
+                </div>
+                <div class="members-wrapper">
+                    <ul class="job_listings job-list full  new-layout hide-desc">
+                        {% for member in members %}
+                        <li data-color="#e12335">
+                            <a class="left post-2489 job_listing type-job_listing status-publish has-post-thumbnail hentry job_listing_region-miami job_listing_type-temporary job-type-temporary job_position_featured">
+                                <div class="listing-logo">
+                                </div>
+                                <div class="listing-title">
+                                    <h4>{{ member.user.name }}
+                                        <span class="job-type temporary remove-member pointer"
+                                              data-href="/business/{{ business.id }}/members/{{ member.id }}/">Remove</span>
+                                    </h4>
+                                    <ul class="listing-icons">
+                                        <li><i class="ln ln-icon-Management"></i> {{ member.position }}</li>
+                                        <li><i class="ln ln-icon-Alarm"></i> {{ member.joinedTime }}</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <a class="small-dialog popup-with-zoom-anim button centered" href="#add-dialog"><i
+                            aria-hidden="true" class="fa fa-plus-circle"></i>Add Member</a>
+                    <div class="small-dialog zoom-anim-dialog mfp-hide apply-popup woocommerce-add-popup"
+                         id="add-dialog">
+                        <div class="small-dialog-headline">
+                            <h2>Add Member</h2>
+                        </div>
+                        <div class="small-dialog-content woo-reg-box">
+                            <form action="/business/{{ business.id }}/members/" class="workscout_form" id="add-member"
+                                  method="POST">
+                                <input name="{{ _csrf.parameterName }}" type="hidden" value="{{ _csrf.token }}"/>
+                                <p class="form-row form-row-wide">
+                                    <label for="add_username">Username<span class="required">*</span>
+                                        <i class="ln ln-icon-Male"></i><input class="input-text" id="add_username"
+                                                                              name="username" type="text" value=""/>
+                                        <span class="form-error"></span>
+                                    </label>
+                                </p>
+                                <p class="form-row form-row-wide">
+                                    <label for="add_position">Position
+                                        <select id="add_position" name="position">
+                                            <option selected value="Employee">Employee</option>
+                                            <option value="Owner">Owner</option>
+                                        </select>
+                                    </label>
+                                </p>
+                                <p class="form-row">
+                                    <input class="button" name="add" type="submit" value="Add"/>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+    $('.remove-member').on('click', function (e) {
+        var url = $(e.target).attr('data-href');
+        $.ajax(url, {
+            async: true,
+            dataType: 'json',
+            data: {
+                "{{ _csrf.parameterName }}": "{{ _csrf.token }}"
+            },
+            method: 'DELETE',
+            success: function (data) {
+                window.location.reload();
+            },
+            error: function (resp) {
+                if (resp.status === 200) window.location.reload();
+                else alert("Cannot delete given member")
+            }
+        });
+    });
+    ajaxSubmitForm("#add-member", {
+        success: function (data) {
+            window.location.reload();
+        }
+    });
+</script>
+{% endblock %}

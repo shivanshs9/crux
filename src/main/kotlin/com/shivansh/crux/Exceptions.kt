@@ -5,3 +5,6 @@ import org.springframework.web.bind.annotation.ResponseStatus
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 class InvalidDataException(val errors: Map<String, String>) : Exception("Invalid data provided.")
+
+@ResponseStatus(HttpStatus.FORBIDDEN)
+class InvalidRoleProvided(msg: String) : Exception(msg)

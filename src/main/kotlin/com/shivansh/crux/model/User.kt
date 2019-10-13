@@ -23,7 +23,6 @@ class User {
     var country: String = "IN"
     var state: String? = null
     var city: String? = null
-    var pincode: String? = null
     var address: String? = null
     lateinit var DOB: Date
     lateinit var joinedTime: Date
@@ -31,4 +30,6 @@ class User {
     enum class GENDER {
         Male, Female;
     }
+
+    fun getName(): String = "$firstName ${lastName ?: "($username)"}"
 }
