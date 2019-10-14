@@ -101,7 +101,7 @@
 		<div class="vc_row wpb_row vc_row-fluid">
 			<div class="wpb_column vc_column_container vc_col-sm-8">
 				<div class="vc_column-inner ">
-					<div class="wpb_wrapper"><H3 class="margin-top-0 margin-bottom-25">Recent Jobs</H3>
+					<div class="wpb_wrapper"><H3 class="margin-top-0 margin-bottom-25">Upcoming Tests</H3>
 						<div class="wpb_text_column wpb_content_element ">
 							<div class="wpb_wrapper">
 								<div class="job_listings " data-categories="" data-job_types="" data-keywords=""
@@ -116,144 +116,27 @@
 									</div>
 
 									<ul class="job_listings job-list full  new-layout hide-desc">
-
-										<!-- Listing -->
-										<li data-color="#e12335" data-latitude="51.54327"
-											data-longitude="-0.001870000000053551">
-											<a class="left post-2489 job_listing type-job_listing status-publish has-post-thumbnail hentry job_listing_region-miami job_listing_category-restaurant-food-service job_listing_type-temporary job-type-temporary job_position_featured"
-											   data-color="#e12335" data-latitude="51.54327"
-											   data-longitude="-0.001870000000053551"
-											   href="job/restaurant-dishwasher/index.html">
-												<div class="listing-logo">
-													<img alt="King LLC" class="company_logo"
-														 src="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/company-logo.png"/>
-												</div>
+										{% for test in tests %}
+										<li>
+											<a class="left job_listing" href="/tests/{{ test.id }}/summary">
+												<div class="listing-logo"></div>
 												<div class="listing-title">
-													<h4>Restaurant Dishwasher
-														<span class="job-type temporary">Temporary</span>
-
+													<h4>{{ test.name }}
+														<span class="job-type freelance">Register</span>
 													</h4>
 													<ul class="listing-icons">
-
-														<li><i class="ln ln-icon-Management"></i> King LLC</li>
-
-														<li><i class="ln ln-icon-Map2"></i> Miami</li>
-
-
-														<li><i class="ln ln-icon-Money-2"></i>
-															&#36;55000 - &#36;70000
+														<li title="Start Time"><i class="ln ln-icon-Alarm"></i> {{ test.startTimeString }}
 														</li>
-
+														<li title="Test Duration"><i class="ln ln-icon-Alarm"></i> {{ test.durationString }}
+														</li>
+														<li title="Registration count"><i class="ln ln-icon-Business-Mens"></i> {{ test.registrationCount }}
 													</ul>
-
 												</div>
 											</a>
 										</li>
-										<!-- Listing -->
-										<li data-color="#f1630d" data-latitude="53.3795271"
-											data-longitude="-1.546126700000059">
-											<a class="left post-2492 job_listing type-job_listing status-publish hentry job_listing_region-new-york job_listing_category-healthcare job_listing_type-part-time job-type-part-time"
-											   data-color="#f1630d" data-latitude="53.3795271"
-											   data-longitude="-1.546126700000059"
-											   href="job/clinical-psychologist/index.html">
-												<div class="listing-logo">
-													<img alt="Rose Clinic" class="company_logo"
-														 src="http://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/placeholder.png"/>
-												</div>
-												<div class="listing-title">
-													<h4>Clinical psychologist
-														<span class="job-type part-time">Part Time</span>
-
-													</h4>
-													<ul class="listing-icons">
-
-														<li><i class="ln ln-icon-Management"></i> Rose Clinic</li>
-
-														<li><i class="ln ln-icon-Map2"></i> New York</li>
-
-
-														<li><i class="ln ln-icon-Money-2"></i>
-															&#36;40000 - &#36;50000
-														</li>
-
-													</ul>
-
-												</div>
-											</a>
-										</li>
-										<!-- Listing -->
-										<li data-color="#186fc9" data-latitude="40.7668893"
-											data-longitude="-73.9790653">
-											<a class="left post-2490 job_listing type-job_listing status-publish has-post-thumbnail hentry job_listing_region-new-york job_listing_category-healthcare job_listing_type-full-time job-type-full-time"
-											   data-color="#186fc9" data-latitude="40.7668893"
-											   data-longitude="-73.9790653"
-											   href="job/senior-health-and-nutrition-advisor/index.html">
-												<div class="listing-logo">
-													<img alt="Telimed" class="company_logo"
-														 src="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/Untitled-1-Recovered-150x150_036a17cc6b1cbce4285ea7c4d6a34e16.png"/>
-												</div>
-												<div class="listing-title">
-													<h4>Senior Health and Nutrition Advisor
-														<span class="job-type full-time">Full Time</span>
-
-													</h4>
-													<ul class="listing-icons">
-
-														<li><i class="ln ln-icon-Management"></i> Telimed</li>
-
-														<li><i class="ln ln-icon-Map2"></i> New York</li>
-
-
-														<li><i class="ln ln-icon-Money-2"></i>
-															&#36;30000 - &#36;35000
-														</li>
-
-													</ul>
-
-												</div>
-											</a>
-										</li>
-										<!-- Listing -->
-										<li data-color="#53b427" data-latitude="52.5318835"
-											data-longitude="13.3883826">
-											<a class="left post-2487 job_listing type-job_listing status-publish hentry job_listing_region-miami job_listing_category-market-customer-research job_listing_category-sales-marketing job_listing_type-freelance job-type-freelance"
-											   data-color="#53b427" data-latitude="52.5318835"
-											   data-longitude="13.3883826"
-											   href="job/social-media-and-public-relation-executive/index.html">
-												<div class="listing-logo">
-													<img alt="Socielity" class="company_logo"
-														 src="http://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/placeholder.png"/>
-												</div>
-												<div class="listing-title">
-													<h4>Social Media and Public Relation Executive
-														<span class="job-type freelance">Freelance</span>
-
-													</h4>
-													<ul class="listing-icons">
-
-														<li><i class="ln ln-icon-Management"></i> Socielity</li>
-
-														<li><i class="ln ln-icon-Map2"></i> Miami</li>
-
-
-														<li><i class="ln ln-icon-Money-2"></i>
-															&#36;15000
-														</li>
-
-													</ul>
-
-												</div>
-											</a>
-										</li>
-
+										{% endfor %}
 									</ul>
-
-
-									<a class="load_more_jobs button centered" href="#"><i class="fa fa-plus-circle"></i>Show
-										More Jobs</a>
 									<div class="margin-bottom-55"></div>
-
-
 								</div>
 
 							</div>
@@ -500,26 +383,6 @@
 	 });
 
 	})(this.jQuery);
-
-</script>
-<script type="text/javascript">
-	(function($){
-	$(document).ready(function(){
-
-		$( '.sc-resumes #search_keywords' ).autocomplete({
-
-			source: function(req, response){
-				$.getJSON('https://workscout.in/wp-admin/admin-ajax.php'+'?callback=?&action=workscout_incremental_resumes_suggest', req, response);
-			},
-			select: function(event, ui) {
-				window.location.href=ui.item.link;
-			},
-			minLength: 3,
-		});
-	 });
-
-	})(this.jQuery);
-
 
 </script>
 

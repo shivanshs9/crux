@@ -20,6 +20,10 @@ class TestWithRegistrationCount : ITest {
 
     @Transient
     override var isUserSetter: Boolean = false
+
+    @Transient
+    override var isUserRegistered: Boolean = false
+
     override lateinit var startTime: Date
     override lateinit var endTime: Date
 

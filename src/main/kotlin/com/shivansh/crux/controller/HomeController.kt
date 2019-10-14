@@ -20,7 +20,7 @@ class HomeController : BaseController() {
         (session.getAttribute("SPRING_SECURITY_SAVED_REQUEST") as? SavedRequest)?.let {
             model["redirect_to"] = it.redirectUrl
         }
-        val tests = testService.findUpcomingTests(5)
+        model["tests"] = testService.findUpcomingTests(5)
         return "index"
     }
 }

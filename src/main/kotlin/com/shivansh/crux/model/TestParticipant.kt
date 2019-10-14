@@ -11,7 +11,7 @@ class TestParticipant {
     var id: Long = 0
 
     lateinit var registeredTime: Date
-    lateinit var startTime: Date
+    var endTime: Date? = null
 
     @ManyToOne
     @JoinColumn(name = "testId")
@@ -20,4 +20,7 @@ class TestParticipant {
     @ManyToOne
     @JoinColumn(name = "userId")
     lateinit var user: User
+
+    val isOver: Boolean
+        get() = test.isOver || endTime?.let { it <= Calendar.getInstance().time } ?: false
 }

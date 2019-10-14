@@ -5,7 +5,6 @@ import com.shivansh.crux.InvalidRoleProvidedException
 import com.shivansh.crux.model.BusinessMember
 import com.shivansh.crux.service.IBusinessService
 import com.shivansh.crux.service.ITestService
-import com.shivansh.crux.service.IUserService
 import com.shivansh.crux.util.BaseResponseData
 import com.shivansh.crux.util.HTML5_DATE_FORMATTER
 import com.shivansh.crux.util.RequestData
@@ -19,9 +18,6 @@ import java.util.*
 @RestController
 class TestManageRestController : BaseController() {
     @Autowired
-    lateinit var userService: IUserService
-
-    @Autowired
     lateinit var businessService: IBusinessService
 
     @Autowired
@@ -31,7 +27,7 @@ class TestManageRestController : BaseController() {
 
     @ModelAttribute
     internal fun verifyEmployee(@PathVariable("businessId") businessId: Long) {
-        val loggedInUser = userService.findByUsername(securityService.findLoggedInUsername()!!)
+        val loggedInUser = getLoggedInUser()
         businessService.findByUserAndBusinessId(loggedInUser!!, businessId).run {
             if (this == null || this.position != BusinessMember.POSITION.Employee) throw InvalidRoleProvidedException("User is not given business employee")
             businessMember = this@run

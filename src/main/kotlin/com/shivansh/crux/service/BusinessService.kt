@@ -3,6 +3,7 @@ package com.shivansh.crux.service
 import com.shivansh.crux.controller.BusinessDetailsData
 import com.shivansh.crux.model.Business
 import com.shivansh.crux.model.BusinessMember
+import com.shivansh.crux.model.ITest
 import com.shivansh.crux.model.User
 import com.shivansh.crux.repository.BusinessMemberRepository
 import com.shivansh.crux.repository.BusinessRepository
@@ -25,6 +26,7 @@ interface IBusinessService {
     fun findBusinessMembers(business: Business): List<BusinessMember>
     fun addNewMember(business: Business, user: User, position: BusinessMember.POSITION): BusinessMember?
     fun removeMember(memberId: Long)
+    fun findByTest(test: ITest): Business
 }
 
 @Service
@@ -96,4 +98,6 @@ class BusinessService : IBusinessService {
     }
 
     override fun findByUser(user: User): BusinessMember? = businessMemberRepository.findByUser(user)
+
+    override fun findByTest(test: ITest) = businessRepository.findByTestId(test.id)
 }

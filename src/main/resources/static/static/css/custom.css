@@ -21,3 +21,23 @@
     top: 50%;
     transform: translateY(-50%);
 }
+
+a.answered {
+    background-color: #505050 !important;
+    color: #fff !important;
+}
+
+a.answered.active {
+    background-color: #26ae61 !important;
+}
+
+.option.answered {
+    border-left: 4px solid #26ae61 !important;
+    background-color: aliceblue !important;
+}
+
+@media only screen and (min-width: 768px) {
+    #titlebar .button.countdown {
+        right: 150px;
+    }
+}

@@ -4,7 +4,6 @@ import com.shivansh.crux.InvalidDataException
 import com.shivansh.crux.InvalidRoleProvidedException
 import com.shivansh.crux.model.BusinessMember
 import com.shivansh.crux.service.IBusinessService
-import com.shivansh.crux.service.IUserService
 import com.shivansh.crux.util.RequestData
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -16,12 +15,9 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/business/admin")
 class BusinessAdminController : BaseController() {
     @Autowired
-    lateinit var userService: IUserService
-
-    @Autowired
     lateinit var businessService: IBusinessService
 
-    internal fun getBusiness() = userService.findByUsername(securityService.findLoggedInUsername()!!)?.let {
+    internal fun getBusiness() = getLoggedInUser()?.let {
         businessService.findByUser(it)
     }!!.business
 
@@ -44,9 +40,6 @@ class BusinessAdminController : BaseController() {
 @RestController
 @RequestMapping("/business/{id:[\\d]+}")
 class BusinessAdminRestController : BaseController() {
-    @Autowired
-    lateinit var userService: IUserService
-
     @Autowired
     lateinit var businessService: IBusinessService
 

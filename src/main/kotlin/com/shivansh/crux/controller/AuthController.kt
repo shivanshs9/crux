@@ -18,9 +18,6 @@ import javax.servlet.http.HttpSession
 @RequestMapping("/auth")
 class AuthController : BaseController() {
     @Autowired
-    private lateinit var userService: IUserService
-
-    @Autowired
     private lateinit var businessService: IBusinessService
 
     @PostMapping("/login")

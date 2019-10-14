@@ -6,7 +6,6 @@ import com.shivansh.crux.model.User
 import com.shivansh.crux.service.IBusinessService
 import com.shivansh.crux.service.IQuestionService
 import com.shivansh.crux.service.ITestService
-import com.shivansh.crux.service.IUserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -18,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping
 @RequestMapping("/business/work")
 @Controller
 class BusinessEmployeeController : BaseController() {
-    @Autowired
-    lateinit var userService: IUserService
-
     @Autowired
     lateinit var businessService: IBusinessService
 

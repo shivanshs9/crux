@@ -16,6 +16,7 @@ interface ITest {
     var organizer: String?
 
     var isUserSetter: Boolean
+    var isUserRegistered: Boolean
 
     var startTime: Date
     var endTime: Date
@@ -33,6 +34,15 @@ interface ITest {
         get() = formatCompleteDate(endTime)
 
     var registrationCount: Long
+
+    val isUpcoming: Boolean
+        get() = startTime >= Calendar.getInstance().time
+
+    val isOver: Boolean
+        get() = endTime < Calendar.getInstance().time
+
+    val isOngoing: Boolean
+        get() = !isUpcoming && !isOver
 }
 
 @Entity
@@ -52,9 +62,23 @@ open class Test : ITest {
     @Transient
     override var isUserSetter: Boolean = false
 
+    @Transient
+    override var isUserRegistered: Boolean = false
+
     override lateinit var startTime: Date
     override lateinit var endTime: Date
 
     @Transient
     override var registrationCount: Long = 0
+}
+
+fun ITest.toModel(): Test = Test().also {
+    it.id = id
+    it.name = name
+    it.description = description
+    it.createdTime = createdTime
+    it.summary = summary
+    it.organizer = organizer
+    it.startTime = startTime
+    it.endTime = endTime
 }

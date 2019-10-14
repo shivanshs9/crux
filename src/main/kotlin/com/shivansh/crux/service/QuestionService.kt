@@ -22,6 +22,7 @@ interface IQuestionService {
     fun getMcqOptions(mcqQuestion: McqQuestion): List<McqOption>
     fun deleteMcqOption(mcqOption: McqOption)
     fun getMcqOption(optionId: Long): McqOption?
+    fun getMcqQuestion(questionId: Long): McqQuestion?
 }
 
 @Service
@@ -75,5 +76,9 @@ class QuestionService: IQuestionService {
     override fun deleteMcqOption(mcqOption: McqOption) = mcqOptionRepository.delete(mcqOption)
     override fun getMcqOption(optionId: Long): McqOption? = mcqOptionRepository.findById(optionId).run {
         if (isPresent) get() else null
+    }
+
+    override fun getMcqQuestion(questionId: Long): McqQuestion? = mcqQuestionRepository.findById(questionId).run {
+        if (isPresent)  get() else null
     }
 }

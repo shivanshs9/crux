@@ -1,0 +1,168 @@
+{% extends 'base.twig' %}
+
+{% block header %}
+{% include 'header-nav.twig' %}
+{% endblock %}
+
+{% block content %}
+<div id="titlebar" class="photo-bg" style="background: url('https://workscout.wpengine.com/wp-content/uploads/2015/10/job-page-photo1.jpg')">
+
+    <div class="container">
+        <div class="eleven columns">
+
+            <span><a href="https://workscout.in/job-category/restaurant-food-service/">{{ test.organizer }}</a></span>
+            <h1>{{ test.name }}
+                {% if test.isUpcoming %}
+                <span class="job-type full-time">Upcoming</span>
+                {% elseif test.isOver %}
+                <span class="job-type freelance">Finished</span>
+                {% else %}
+                <span class="job-type full-time">In-Progress</span>
+                {% endif %}
+            </h1>
+        </div>
+
+        {% if test.isOngoing %}
+        <div class="five columns">
+            <div class="job-manager-form wp-job-manager-bookmarks-form">
+                <div><a class="bookmark-notice button dark bookmark-notice" href="/tests/{{ test.id }}/solve">Enter the test</a></div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="container right-sidebar">
+    <div class="sixteen columns">
+    </div>
+
+
+
+    <!-- Recent Jobs -->
+
+    <div class="eleven columns ">
+        <div class="padding-right">
+            <!-- Company Info -->
+            <div class="company-info left-company-logo" >
+                <a href="#">
+                    {% if business.logo %}
+                    <img class="company_logo" src="{{ business.logo }}" alt="{{ business.name }}" />
+                    {% endif %}
+                </a>
+                <div class="content">
+                <h4>
+                    <strong>{{ test.summary }}</strong>
+                </h4>
+                <span><a class="website" href="#" target="_blank" rel="nofollow"><i class="fa fa-link"></i> Website</a></span>
+            </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="single_job_listing" >
+
+                <div class="job_description">
+                    <p class="margin-reset">{{ test.description }}</p>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Widgets -->
+    <div class="five columns" id="job-details">
+        <!-- Sort by -->
+        <div class="widget">
+            <h4>Test Overview</h4>
+            <div class="job-overview">
+                <ul>
+                    <li>
+                        <i class="fa fa-calendar"></i>
+                        <div>
+                            <strong>Start time:</strong>
+                            <span><time>{{ test.startTimeString }}</time></span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-calendar"></i>
+                        <div>
+                            <strong>End time:</strong>
+                            <span><time>{{ test.endTimeString }}</time></span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-clock-o"></i>
+                        <div>
+                            <strong>Duration:</strong>
+                            <span>{{ test.durationString }}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="ln ln-icon-Business-Mens"></i>
+                        <div>
+                            <strong>Participants:</strong>
+                            <span>{{ test.registrationCount }}</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="job_application application">
+                    {% if test.isUserRegistered %}
+                    <a href="#deregister-dialog" class="small-dialog popup-with-zoom-anim button">Deregister for test</a>
+
+                    <div id="deregister-dialog" class="small-dialog zoom-anim-dialog mfp-hide apply-popup">
+                        <div class="small-dialog-headline">
+                            <h2>De-Register for this test</h2>
+                        </div>
+                        <div class="small-dialog-content">
+                            <form class="job-manager-application-form job-manager-form" method="DELETE" action="/tests/{{ test.id }}/participants" id="delete-participant-form">
+                                <input name="{{ _csrf.parameterName }}" type="hidden" value="{{ _csrf.token }}"/>
+                                <p class="form-row">
+                                    <input class="button" name="add" id="deregisterBtn" type="submit" value="De-Register"/>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                    {% else %}
+                    <a href="#register-dialog" class="small-dialog popup-with-zoom-anim button">Register for test</a>
+
+                    <div id="register-dialog" class="small-dialog zoom-anim-dialog mfp-hide apply-popup">
+                        <div class="small-dialog-headline">
+                            <h2>Register for this test</h2>
+                        </div>
+                        <div class="small-dialog-content">
+                            <form class="job-manager-application-form job-manager-form" method="POST" action="/tests/{{ test.id }}/participants" id="new-participant-form">
+                                <input name="{{ _csrf.parameterName }}" type="hidden" value="{{ _csrf.token }}"/>
+                                <p class="form-row">
+                                    <input class="button" name="add" id="registerBtn" type="submit" value="Register"/>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+    options = {
+        success: function(data) {
+            window.location.reload();
+        }
+    };
+    ajaxSubmitForm("#new-participant-form", options);
+    ajaxSubmitForm("#delete-participant-form", options);
+</script>
+{% endblock %}

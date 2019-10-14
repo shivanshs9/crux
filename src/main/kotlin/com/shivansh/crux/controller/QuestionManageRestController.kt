@@ -7,7 +7,6 @@ import com.shivansh.crux.model.McqOption
 import com.shivansh.crux.model.ProblemSetter
 import com.shivansh.crux.service.IQuestionService
 import com.shivansh.crux.service.ITestService
-import com.shivansh.crux.service.IUserService
 import com.shivansh.crux.util.BaseResponseData
 import com.shivansh.crux.util.RequestData
 import com.shivansh.crux.util.isNull
@@ -18,9 +17,6 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/tests/{testId:[\\d]+}/questions")
 class QuestionManageRestController: BaseController() {
     @Autowired
-    lateinit var userService: IUserService
-
-    @Autowired
     lateinit var testService: ITestService
 
     @Autowired
@@ -30,7 +26,7 @@ class QuestionManageRestController: BaseController() {
 
     @ModelAttribute
     internal fun verifyProblemSetter(@PathVariable testId: Long) {
-        val user = userService.findByUsername(securityService.findLoggedInUsername()!!)!!
+        val user = getLoggedInUser()!!
         testService.findProblemSetterForTestAndUser(testId, user.id)?.let {
             problemSetter = it
         } ?: throw InvalidRoleProvidedException("User is not problem setter of the given test")

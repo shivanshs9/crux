@@ -24,6 +24,9 @@ class McqQuestion {
     @JoinColumn(name = "problemSetterId")
     lateinit var problemSetter: ProblemSetter
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
+    lateinit var options: Set<McqOption>
+
     val createdTimeString: String
         get() = formatCompleteDate(createdTime)
 }

@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS participant
 (
   id INT NOT NULL AUTO_INCREMENT,
   registeredTime DATETIME NOT NULL,
-  startTime DATETIME NOT NULL,
+  endTime DATETIME NULL,
   testId INT NOT NULL,
   userId INT NOT NULL,
   PRIMARY KEY (id),
@@ -189,11 +189,9 @@ CREATE TABLE IF NOT EXISTS mcq_submission
   submittedTime DATETIME NOT NULL,
   score INT NOT NULL,
   participantId INT NOT NULL,
-  optionId INT NOT NULL,
   questionId INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (participantId) REFERENCES participant(id),
-  FOREIGN KEY (optionId) REFERENCES mcq_option(id),
   FOREIGN KEY (questionId) REFERENCES mcq_question(id)
 );
 
@@ -229,6 +227,15 @@ CREATE TABLE IF NOT EXISTS passed_test_case
   PRIMARY KEY (testCaseId, submissionId),
   FOREIGN KEY (testCaseId) REFERENCES test_case(id),
   FOREIGN KEY (submissionId) REFERENCES coding_submission(id)
+);
+
+CREATE TABLE IF NOT EXISTS mcq_submission_option
+(
+    submissionId INT NOT NULL ,
+    optionId INT NOT NULL,
+    PRIMARY KEY (optionId, submissionId),
+    FOREIGN KEY (optionId) REFERENCES mcq_option (id) ON DELETE CASCADE,
+    FOREIGN KEY (submissionId) REFERENCES mcq_submission (id) ON DELETE CASCADE
 );
 
 # SET FOREIGN_KEY_CHECKS = 1;
