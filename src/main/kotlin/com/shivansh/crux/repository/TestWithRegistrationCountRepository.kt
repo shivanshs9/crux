@@ -14,4 +14,7 @@ interface TestWithRegistrationCountRepository : CrudRepository<TestWithRegistrat
 
     @Query("SELECT * FROM test_with_registrations t WHERE t.startTime > ?1 ORDER BY t.startTime LIMIT ?2", nativeQuery = true)
     fun findByStartTimeGreaterThan(startTime: Date, count: Int): Set<TestWithRegistrationCount>
+
+    @Query("SELECT DISTINCT t.* FROM test_with_registrations t JOIN participant_with_score p on t.id = p.testId WHERE p.userId = :userId ORDER BY totalScore DESC", nativeQuery = true)
+    fun findByRegisteredUser(@Param("userId") userId: Long): Set<TestWithRegistrationCount>
 }

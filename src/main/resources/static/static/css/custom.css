@@ -41,3 +41,7 @@ a.answered.active {
         right: 150px;
     }
 }
+
+.score {
+    font-size: unset;
+}

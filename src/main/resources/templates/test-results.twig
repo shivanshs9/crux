@@ -30,28 +30,14 @@
 
         <div class="five columns">
             <div class="job-manager-form wp-job-manager-bookmarks-form">
-                <div id="test-countdown" class="button countdown">{{ test.endTimeString }}</div>
-                <div><a class="small-dialog popup-with-zoom-anim button dark" id="endTestBtn" href="#end-dialog">End the test</a></div>
-                <div id="end-dialog" class="small-dialog zoom-anim-dialog mfp-hide apply-popup">
-                    <div class="small-dialog-headline">
-                        <h2>Are you sure you want to end the test?</h2>
-                    </div>
-                    <div class="small-dialog-content">
-                        <form class="job-manager-application-form job-manager-form" method="POST" action="/tests/{{ test.id }}/finish" id="end-test-form">
-                            <input name="{{ _csrf.parameterName }}" type="hidden" value="{{ _csrf.token }}"/>
-                            <p class="form-row">
-                                <input class="button" name="add" id="registerBtn" type="submit" value="End"/>
-                            </p>
-                        </form>
-                    </div>
-                </div>
+                <div><a class=" button dark" id="endTestBtn" href="/tests/{{ test.id }}/leaderboard">View Leaderboard</a></div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container full-width">
-    <article class="sixteen columns woocommerce-account post-2870 page type-page status-publish hentry" id="post-2870">
+    <article class="sixteen columns page type-page">
         <ul class="tabs-nav">
             {% for question in questions %}
             <li><a href="#q{{ question.id }}" id="q{{ question.id }}-link">Question {{ loop.index }}</a></li>
@@ -61,7 +47,10 @@
             {% for question in questions %}
             <div class="tab-content" id="q{{ question.id }}">
                     <div class="details-headline">
-                    <h2>Q{{ loop.index }}. {{ question.title }}</h2>
+                    <h2 style="position: relative">
+                        Q{{ loop.index }}. {{ question.title }}
+                        <span class="list-right-end score"></span>
+                    </h2>
                 </div>
                 <div class="details-wrapper">
                     <ul class="job_listings job-list full  new-layout hide-desc">
@@ -72,7 +61,15 @@
                                 </div>
                                 <div class="listing-title">
                                     <h4>{{ option.statement }}
-                                        <input class="list-right-end" type="checkbox" value="true" name="option" data-option="{{ option.id }}" style="margin-right: 20px"/>
+                                        {% if option.isCorrect %}
+                                        <span class="job-type freelance pointer">
+                                            Correct
+                                        </span>
+                                        {% else %}
+                                        <span class="job-type temporary pointer">
+                                            Incorrect
+                                        </span>
+                                        {% endif %}
                                     </h4>
                                     <ul class="listing-icons">
                                     </ul>
@@ -81,9 +78,6 @@
                         </li>
                         {% endfor %}
                     </ul>
-                    <p class="form-row">
-                        <input class="submit-btn" name="submit" type="submit" value="Submit" data-id="{{ question.id }}"/>
-                    </p>
                 </div>
             </div>
             {% endfor %}
@@ -97,10 +91,10 @@
     var totalQuestions = {{ length(questions) }}
     var solvedQuestions = {};
 
-    function updateQuestionUi(questionId) {
+    function updateQuestionUi(questionId, score) {
         $("#q" + questionId + "-link").addClass("answered");
-        $("#q" + questionId + " .option-link").removeClass("answered");
         $('#o-' + solvedQuestions[questionId].join(', #o-')).addClass("answered");
+        $("#q" + questionId + " .score").text("Score: " + score)
     }
 
     $(document).on('ready', function (e) {
@@ -110,55 +104,8 @@
             var correctCheckBoxes = checkBoxes.filter(function(checkBox) { return obj.options.includes(parseInt(checkBox.attr("data-option"))) });
             correctCheckBoxes.forEach(function(elem) { elem.prop('checked', true); });
             solvedQuestions[obj.id] = obj.options;
-            updateQuestionUi(obj.id)
+            updateQuestionUi(obj.id, obj.score)
         })
     });
-
-    $(".option-link").on("click", function (e) {
-        var choiceBox = $(e.currentTarget).find("input[name=option]");
-        if (choiceBox === $(e.target))   return false;
-        choiceBox.prop('checked', !choiceBox.prop('checked'))
-    });
-    $(".submit-btn").on('click', function (e) {
-        var questionId = $(this).attr('data-id');
-        var checkBoxes = $("#q" + questionId).find("input[name=option]").map(function () { return $(this) }).get();
-        var correctCheckBoxes = checkBoxes.filter(function(checkBox) { return checkBox.prop('checked') });
-        var correctOptionIds = correctCheckBoxes.map(function(checkBox) { return parseInt(checkBox.attr('data-option')) });
-        var url = "/tests/{{ test.id }}/questions/mcq/" + questionId + "/submit";
-        var data = {
-            ids: correctOptionIds
-        };
-
-        $.ajax(url, {
-            method: "POST",
-            dataType: 'json',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            headers: {
-                'X-CSRF-TOKEN': "{{ _csrf.token }}"
-            },
-            success: function(data) {
-                solvedQuestions[questionId] = data.ids;
-                updateQuestionUi(questionId);
-            },
-            error: function(resp) {
-                var errors = resp.responseJSON.errors
-                alert(errors.questionId || errors.ids)
-            }
-        });
-    })
-
-    $("#test-countdown").countdown(new Date("{{ test.endTime }}"))
-    .on('update.countdown', function(event) {
-        $(this).html(event.strftime('%-H hour%!H %-M min%!M %-S sec%!S'));
-    })
-    .on('finish.countdown', function (event) {
-        $("#endTestBtn").click();
-    })
-    ajaxSubmitForm("#end-test-form", {
-        success: function(data) {
-            window.location.href = "/tests/{{ test.id }}/leaderboard"
-        }
-    })
 </script>
 {% endblock %}

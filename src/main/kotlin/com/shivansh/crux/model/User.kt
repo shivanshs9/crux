@@ -31,5 +31,6 @@ class User {
         Male, Female;
     }
 
-    fun getName(): String = "$firstName ${lastName ?: "($username)"}"
+    val name: String
+        get() = "$firstName ${lastName ?: "($username)"}"
 }

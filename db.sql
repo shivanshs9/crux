@@ -246,3 +246,10 @@ CREATE VIEW test_with_registrations AS (
              LEFT OUTER JOIN participant pt ON t.id = pt.testId
     GROUP BY t.id
 );
+
+CREATE VIEW participant_with_score AS (
+    SELECT pt.*, SUM(ms.score) totalScore
+    FROM participant pt
+             LEFT OUTER JOIN mcq_submission ms on pt.id = ms.participantId
+    GROUP BY pt.id
+);

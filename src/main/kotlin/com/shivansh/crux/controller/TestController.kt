@@ -48,6 +48,7 @@ class TestController : BaseController() {
 
     @GetMapping("/summary")
     fun details(model: Model): String {
+        testService.findParticipantByUserAndTest(getLoggedInUser()!!, test)?.also { model["participant"] = it }
         model["title"] = test.name
         model["business"] = getBusiness()
         return "test-summary"
@@ -65,8 +66,21 @@ class TestController : BaseController() {
         return "test-solve"
     }
 
+    @GetMapping("/results")
+    fun userTestResults(model: Model): String {
+        val participant = testService.findParticipantByUserAndTest(getLoggedInUser()!!, test) ?: throw InvalidRoleProvidedException("User is not registered with the test")
+        if (!participant.isOver)    return "redirect:/tests/${test.id}/solve"
+        model["title"] = "${test.name} Results"
+        val questions = questionService.findMcqQuestionsOfTest(test).also { model["questions"] = it }
+        model["submissions"] = submissionService.findMcqSubmissionForParticipant(participant).map {
+            mapOf("id" to it.question.id, "options" to it.options.map { it.id.optionId }, "score" to it.score)
+        }.run { ObjectMapper().writeValueAsString(this) }
+        return "test-results"
+    }
+
     @GetMapping("/leaderboard")
     fun leaderboard(model: Model): String {
+        model["leaderboard"] = testService.getTestLeaderboard(test)
         model["title"] = "Leaderboard"
         return "test-leaderboard"
     }

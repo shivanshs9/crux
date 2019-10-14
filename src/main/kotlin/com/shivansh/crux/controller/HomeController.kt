@@ -23,4 +23,18 @@ class HomeController : BaseController() {
         model["tests"] = testService.findUpcomingTests(5)
         return "index"
     }
+
+    @GetMapping("/profile")
+    fun profile(model: Model): String {
+        val user = getLoggedInUser()!!.also { model["user"] = it }
+        model["title"] = user.name
+        return "user-profile"
+    }
+
+    @GetMapping("/my-tests")
+    fun myTests(model: Model): String {
+        model["tests"] = testService.findUserTests(getLoggedInUser()!!)
+        model["title"] = "My Tests"
+        return "user-past-tests"
+    }
 }

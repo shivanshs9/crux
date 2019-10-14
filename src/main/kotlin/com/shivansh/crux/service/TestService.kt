@@ -20,6 +20,8 @@ interface ITestService {
     fun addTestParticipant(user: User, test: Test): TestParticipant?
     fun removeTestParticipant(participant: TestParticipant)
     fun endTest(participant: TestParticipant)
+    fun getTestLeaderboard(test: ITest): List<ITestParticipant>
+    fun findUserTests(user: User): List<ITest>
 }
 
 @Service
@@ -38,6 +40,9 @@ class TestService : ITestService {
 
     @Autowired
     lateinit var testParticipantRepository: TestParticipantRepository
+
+    @Autowired
+    lateinit var leaderboardParticipantRepository: LeaderboardParticipantRepository
 
     internal fun getBusinessMemberIds(business: Business) = businessMemberRepository.findByBusiness(business).map { it.id }.toSet()
 
@@ -135,4 +140,8 @@ class TestService : ITestService {
         participant.endTime = Calendar.getInstance().time
         testParticipantRepository.save(participant)
     }
+
+    override fun getTestLeaderboard(test: ITest): List<ITestParticipant> = leaderboardParticipantRepository.getLeaderboardResults(test.id).toList()
+
+    override fun findUserTests(user: User): List<ITest> = testWithRegistrationCountRepository.findByRegisteredUser(user.id).toList()
 }

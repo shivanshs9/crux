@@ -1,0 +1,77 @@
+{% extends 'base.twig' %}
+
+{% block header %}
+{% include 'header-nav.twig' %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Titlebar
+================================================== -->
+<div class="single" id="titlebar">
+    <div class="container">
+
+        <div class="eleven columns">
+            <h1>{{ title }}</h1>
+            <nav id="breadcrumbs">
+                <ul>
+                    <!-- Breadcrumb NavXT 6.0.4 -->
+                    <li class="home"><span property="itemListElement" typeof="ListItem"><a class="home"
+                                                                                           href="/"
+                                                                                           property="item"
+                                                                                           title="Go to Crux."
+                                                                                           typeof="WebPage"><span
+                            property="name">Crux</span></a><meta content="1" property="position"></span></li>
+                    <li class="post post-page current-item"><span property="itemListElement" typeof="ListItem"><span
+                            property="name">{{ title }}</span><meta content="2" property="position"></span></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="five columns">
+            <div class="job-manager-form wp-job-manager-bookmarks-form">
+                {% if test.isUserRegistered %}
+                <div><a class="button dark" id="endTestBtn" href="/tests/{{ test.id }}/results">View Test Results</a></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container full-width">
+    <article class="sixteen columns page type-page">
+        <div id="job-manager-job-dashboard">
+            <div class="details-headline">
+                <h2>Registered Participants - {{ length(leaderboard) }}</h2>
+            </div>
+            <div class="details-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Gender</th>
+                        <th>Country</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for participant in leaderboard %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ participant.user.name }}</td>
+                        <td>{{ participant.totalScore }}</td>
+                        <td>{{ participant.user.gender }}</td>
+                        <td>{{ participant.user.country }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+{% endblock %}

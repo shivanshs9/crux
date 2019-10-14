@@ -22,10 +22,16 @@
             </h1>
         </div>
 
-        {% if test.isOngoing %}
+        {% if participant.isOver %}
         <div class="five columns">
             <div class="job-manager-form wp-job-manager-bookmarks-form">
-                <div><a class="bookmark-notice button dark bookmark-notice" href="/tests/{{ test.id }}/solve">Enter the test</a></div>
+                <div><a class="button dark" href="/tests/{{ test.id }}/leaderboard">View Leaderboard</a></div>
+            </div>
+        </div>
+        {% elseif test.isUserRegistered %}
+        <div class="five columns">
+            <div class="job-manager-form wp-job-manager-bookmarks-form">
+                <div><a class="button dark" href="/tests/{{ test.id }}/solve">Enter the test</a></div>
             </div>
         </div>
         {% endif %}

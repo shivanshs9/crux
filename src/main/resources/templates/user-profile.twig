@@ -1,0 +1,99 @@
+{% extends 'base.twig' %}
+
+{% block header %}
+{% include 'header-nav.twig' %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Titlebar
+================================================== -->
+<div class="single" id="titlebar">
+    <div class="container">
+
+        <div class="sixteen columns">
+            <h1>{{ title }}</h1>
+            <nav id="breadcrumbs">
+                <ul>
+                    <!-- Breadcrumb NavXT 6.0.4 -->
+                    <li class="home"><span property="itemListElement" typeof="ListItem"><a class="home"
+                                                                                           href="/"
+                                                                                           property="item"
+                                                                                           title="Go to Crux."
+                                                                                           typeof="WebPage"><span
+                            property="name">Crux</span></a><meta content="1" property="position"></span></li>
+                    <li class="post post-page current-item"><span property="itemListElement" typeof="ListItem"><span
+                            property="name">{{ title }}</span><meta content="2" property="position"></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container full-width">
+    <article class="sixteen columns page type-page">
+        <div class="details-headline">
+            <h2>Edit Profile</h2>
+        </div>
+        <div class="details-wrapper">
+            <form action="/profile/edit" class="workscout_form" id="update-profile-form" method="PATCH">
+                <input name="{{ _csrf.parameterName }}" type="hidden" value="{{ _csrf.token }}"/>
+
+                <p class="form-row form-row-wide">
+                    <label for="reg_username">Username <span class="required">*</span>
+                        <i class="ln ln-icon-Face-Style4"></i><input class="input-text" id="reg_username"
+                                                                     name="username" type="text" value="{{ user.username }}"/>
+                        <span class="form-error"></span>
+                    </label>
+                </p>
+
+                <p class="form-row form-row-wide">
+                    <label for="reg_firstName">First Name <span class="required">*</span>
+                        <i class="ln ln-icon-Male"></i><input class="input-text" id="reg_firstName"
+                                                              name="firstName" type="text" value="{{ user.firstName }}"/>
+                        <span class="form-error"></span>
+                    </label>
+
+                    <label for="reg_lastName">Last Name
+                        <i class="ln ln-icon-Male"></i><input class="input-text" id="reg_lastName"
+                                                              name="lastName" type="text" value="{{ user.lastName }}"/>
+                        <span class="form-error"></span>
+                    </label>
+                </p>
+
+                <p class="form-row form-row-wide">
+                    <label>Address
+                        <i class="ln ln-icon-Map-Marker2"></i><input class="input-text"
+                                                                     name="address" type="text" value="{{ user.address }}"/>
+                        <span class="form-error"></span>
+                    </label>
+                </p>
+
+                <p>
+                    <label for="bn_country">Country
+                        <select id="bn_country" name="country">
+                            <option selected value="IN">India</option>
+                        </select>
+                        <span class="form-error"></span>
+                    </label>
+                </p>
+
+                <p class="form-row">
+                    <input class="button" name="register" type="submit" value="Update"/>
+                </p>
+            </form>
+        </div>
+    </article>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+    options = {
+        success: function (data) {
+            window.location.reload();
+        }
+    };
+    ajaxSubmitForm('#update-mcq-form', options);
+</script>
+{% endblock %}
