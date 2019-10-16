@@ -238,7 +238,6 @@ CREATE TABLE IF NOT EXISTS mcq_submission_option
     FOREIGN KEY (submissionId) REFERENCES mcq_submission (id) ON DELETE CASCADE
 );
 
-# SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE VIEW test_with_registrations AS (
     SELECT t.*, COUNT(pt.id) registrationCount

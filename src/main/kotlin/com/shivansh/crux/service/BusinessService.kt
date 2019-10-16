@@ -27,6 +27,7 @@ interface IBusinessService {
     fun addNewMember(business: Business, user: User, position: BusinessMember.POSITION): BusinessMember?
     fun removeMember(memberId: Long)
     fun findByTest(test: ITest): Business
+    fun findWithLimit(count: Int): List<Business>
 }
 
 @Service
@@ -100,4 +101,6 @@ class BusinessService : IBusinessService {
     override fun findByUser(user: User): BusinessMember? = businessMemberRepository.findByUser(user)
 
     override fun findByTest(test: ITest) = businessRepository.findByTestId(test.id)
+
+    override fun findWithLimit(count: Int): List<Business> = businessRepository.findWithLimit(count)
 }

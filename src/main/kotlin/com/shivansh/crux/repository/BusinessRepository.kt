@@ -12,4 +12,7 @@ interface BusinessRepository : CrudRepository<Business, Long> {
     @Query("SELECT b.* FROM business b JOIN business_member bm on b.id = bm.businessId" +
             " JOIN problem_setter ps on bm.id = ps.businessMemberId WHERE ps.testId = ?1", nativeQuery = true)
     fun findByTestId(testId: Long): Business
+
+    @Query("SELECT * FROM business b LIMIT ?1", nativeQuery = true)
+    fun findWithLimit(count: Int): List<Business>
 }

@@ -1,5 +1,6 @@
 package com.shivansh.crux.controller
 
+import com.shivansh.crux.service.IBusinessService
 import com.shivansh.crux.service.ITestService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.web.savedrequest.SavedRequest
@@ -14,6 +15,9 @@ class HomeController : BaseController() {
     @Autowired
     lateinit var testService: ITestService
 
+    @Autowired
+    lateinit var businessService: IBusinessService
+
     @GetMapping("/")
     fun home(model: Model, session: HttpSession): String {
         model["title"] = "Home"
@@ -21,6 +25,7 @@ class HomeController : BaseController() {
             model["redirect_to"] = it.redirectUrl
         }
         model["tests"] = testService.findUpcomingTests(5)
+        model["businesses"] = businessService.findWithLimit(5)
         return "index"
     }
 

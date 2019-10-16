@@ -68,7 +68,7 @@
                 speedOut:    50                                 // out animation speed
             });
         }
-        if( winWidth < ws.header_breakpoint ) {
+        if(ws && winWidth < ws.header_breakpoint ) {
             $('header#main-header').addClass('alternative').removeClass('full-width');
         } else {
             if($('header#main-header').data('alt') === "yes" ) {} else {

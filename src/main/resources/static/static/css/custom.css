@@ -45,3 +45,12 @@ a.answered.active {
 .score {
     font-size: unset;
 }
+
+#logo {
+    margin-top: 25px;
+}
+
+#logo a {
+    font-size: 2rem;
+    font-family: "Montserrat", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

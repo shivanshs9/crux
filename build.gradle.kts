@@ -1,9 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootWar
 import org.springframework.boot.gradle.tasks.run.BootRun
 
 plugins {
 	id("org.springframework.boot") version "2.2.0.M6"
 	id("io.spring.dependency-management") version "1.0.8.RELEASE"
+	id("war")
 	kotlin("jvm") version "1.3.50"
 	kotlin("plugin.spring") version "1.3.50"
 }
@@ -41,6 +43,7 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("mysql:mysql-connector-java")
 	annotationProcessor("org.projectlombok:lombok")
+	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
@@ -59,4 +62,8 @@ tasks.withType<KotlinCompile> {
 
 tasks.getByName<BootRun>("bootRun") {
 	sourceResources(sourceSets["main"])
+}
+
+tasks.getByName<BootWar>("bootWar") {
+	enabled = true
 }

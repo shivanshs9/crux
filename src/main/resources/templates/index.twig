@@ -1,7 +1,7 @@
 {% extends 'base.twig' %}
 
 {% block header %}
-{% include 'header-nav-transparent.twig' %}
+{% include 'header-nav.twig' %}
 {% endblock %}
 
 {% block content %}
@@ -11,34 +11,6 @@
 	 style="background-image: url(https://workscout.wpengine.com/wp-content/uploads/2017/06/banner-home-02.jpg);">
 	<div class="container">
 		<div class="sixteen columns">
-
-			<div class="search-container sc-jobs">
-
-				<!-- Form -->
-				<h2>Find Job</h2>
-				<form action="https://workscout.in/browse-jobs/" class="inputs-number-2" method="GET">
-
-
-					<input class="ico-01" id="search_keywords" name="search_keywords"
-						   placeholder="job title, keywords or company name" type="text" value=""/>
-
-					<input class="ico-02" id="search_location" name="search_location"
-						   placeholder="city, province or region" type="text" value=""/>
-
-
-					<button><i class="fa fa-search"></i></button>
-
-				</form>
-				<!-- Browse Jobs -->
-				<div class="browse-jobs">
-					Or browse job offers by <a href="browse-categories/index.html">category</a></div>
-
-				<!-- Announce -->
-				<div class="announce">
-					We have <strong>23</strong> job offers for you!
-				</div>
-			</div>
-
 		</div>
 	</div>
 </div>
@@ -47,42 +19,6 @@
 <div class="container page-container home-page-container">
 	<article class="sixteen columns post-9 page type-page status-publish hentry">
 		<div class="vc_row wpb_row vc_row-fluid vc_custom_1521229758973">
-			<div class="wpb_column vc_column_container vc_col-sm-12">
-				<div class="vc_column-inner ">
-					<div class="wpb_wrapper"><h3 class=" headline margin-top-0 margin-bottom-25 "
-												 style="text-align:left;">Popular Categories</h3>
-						<div class="categories-boxes-container">
-							<!-- Box -->
-							<a class="category-small-box" href="job-category/restaurant-food-service/index.html"> <i
-									class="ln ln-icon-Plates"></i><h4>Restaurant / Food Service</h4><span>7</span></a>
-							<!-- Box -->
-							<a class="category-small-box" href="job-category/healthcare/index.html"> <i
-									class="ln ln-icon-Medical-Sign"></i><h4>Healthcare</h4><span>5</span></a>
-							<!-- Box -->
-							<a class="category-small-box" href="job-category/telecommunications/index.html"> <i
-									class="ln ln-icon-Communication-Tower2"></i><h4>Telecommunications</h4>
-								<span>4</span></a>
-							<!-- Box -->
-							<a class="category-small-box" href="job-category/accounting-finance/index.html"> <i
-									class="ln ln-icon-Bar-Chart"></i><h4>Accounting / Finance</h4><span>3</span></a>
-							<!-- Box -->
-							<a class="category-small-box" href="job-category/automotive-jobs/index.html"> <i
-									class="ln ln-icon-Car-3"></i><h4>Automotive Jobs</h4><span>3</span></a>
-							<!-- Box -->
-							<a class="category-small-box" href="job-category/construction-facilities/index.html"> <i
-									class="ln ln-icon-Worker"></i><h4>Construction / Facilities</h4><span>3</span></a>
-							<!-- Box -->
-							<a class="category-small-box" href="job-category/education-training/index.html"> <i
-									class="ln ln-icon-Student-Female"></i><h4>Education Training</h4><span>2</span></a>
-							<!-- Box -->
-							<a class="category-small-box" href="job-category/transportation-logistics/index.html"> <i
-									class="fa fa-globe"></i><h4>Transportation / Logistics</h4><span>2</span></a></div>
-						<div class="margin-top-30"></div>
-						<a class="button centered" href="browse-categories/index.html">Browse All Categories</a>
-						<div class="margin-bottom-50"></div>
-					</div>
-				</div>
-			</div>
 		</div>
 		<div class="vc_row wpb_row vc_row-fluid vc_row-no-padding" data-vc-full-width="true"
 			 data-vc-full-width-init="false" data-vc-stretch-content="true">
@@ -147,7 +83,7 @@
 			<div class="wpb_column vc_column_container vc_col-sm-4">
 				<div class="vc_column-inner ">
 					<div class="wpb_wrapper">
-						<h3 class="margin-bottom-5">Job Spotlight</h3>
+						<h3 class="margin-bottom-5">Company Spotlight</h3>
 						<!-- Navigation -->
 						<div class="showbiz-navigation">
 							<div class="sb-navigation-left" id="showbiz_left_29"><i class="fa fa-angle-left"></i></div>
@@ -163,95 +99,21 @@
 								 data-right="#showbiz_right_29">
 								<div class="overflowholder">
 									<ul>
+										{% for company in businesses %}
 										<li>
 											<div class="job-spotlight">
-												<a href="job/clinical-psychologist/index.html"><h4>Clinical psychologist
-													<span class="job-type part-time">Part Time</span>
-												</h4></a>
+												<h4>{{ company.name }}
+													<span class="job-type part-time">{{ company.category }}</span>
+												</h4>
 
-												<span class="ws-meta-company-name"><i class="fa fa-briefcase"></i> Rose Clinic</span>
+												<span class="ws-meta-company-name"><i class="fa fa-briefcase"></i>{{ company.city }}</span>
+												<span class="ws-meta-job-location"><i class="fa fa-map-marker"></i>{{ company.state }}</span>
+												<span class="ws-meta-job-location"><i class="fa fa-map-marker"></i>{{ company.country }}</span>
 
-												<span class="ws-meta-job-location"><i class="fa fa-map-marker"></i>  New York</span>
-
-												<span class="ws-meta-rate">
-                                        <i class="fa fa-money"></i>
-                                        &#36;15- &#36;25 / hour                                    </span>
-
-
-												<span class="ws-meta-salary">
-                                        <i class="fa fa-money"></i>
-                                        &#36;40000  - &#36;50000                                    </span>
-
-
-												<p>The successful individual will be working within a small treatment
-													service with patients that have either Learning Disabilities and/or
-													mental ...
-												</p>
-												<a class="button" href="job/clinical-psychologist/index.html">Apply For
-													This Job</a>
+												<p></p>
 											</div>
 										</li>
-										<li>
-											<div class="job-spotlight">
-												<a href="job/senior-health-and-nutrition-advisor/index.html"><h4>Senior
-													Health and Nutrition Advisor
-													<span class="job-type full-time">Full Time</span>
-												</h4></a>
-
-												<span class="ws-meta-company-name"><i class="fa fa-briefcase"></i> Telimed</span>
-
-												<span class="ws-meta-job-location"><i class="fa fa-map-marker"></i>  New York</span>
-
-												<span class="ws-meta-rate">
-                                        <i class="fa fa-money"></i>
-                                        &#36;25- &#36;35 / hour                                    </span>
-
-
-												<span class="ws-meta-salary">
-                                        <i class="fa fa-money"></i>
-                                        &#36;30000  - &#36;35000                                    </span>
-
-
-												<p>Offer strategic and technical health and nutrition advice to
-													headquarters and field staff, as well as training and coaching
-													Telimed ...
-												</p>
-												<a class="button"
-												   href="job/senior-health-and-nutrition-advisor/index.html">Apply For
-													This Job</a>
-											</div>
-										</li>
-										<li>
-											<div class="job-spotlight">
-												<a href="job/social-media-and-public-relation-executive/index.html"><h4>
-													Social Media and Public Relation Executive
-													<span class="job-type freelance">Freelance</span>
-												</h4></a>
-
-												<span class="ws-meta-company-name"><i class="fa fa-briefcase"></i> Socielity</span>
-
-												<span class="ws-meta-job-location"><i class="fa fa-map-marker"></i>  Miami</span>
-
-												<span class="ws-meta-rate">
-                                        <i class="fa fa-money"></i>
-                                        &#36;25- &#36;35 / hour                                    </span>
-
-
-												<span class="ws-meta-salary">
-                                        <i class="fa fa-money"></i>
-                                        &#36;15000                                     </span>
-
-
-												<p>The Social Media &amp; PR Executive will be responsible for
-													increasing hotel marketing communication across a variety of social
-													media ...
-												</p>
-												<a class="button"
-												   href="job/social-media-and-public-relation-executive/index.html">Apply
-													For This Job</a>
-											</div>
-										</li>
-
+										{% endfor %}
 									</ul>
 									<div class="clearfix"></div>
 
@@ -293,42 +155,6 @@
 											 width="130"/>                    <h4>John Smith <span>Jobseeker</span></h4>
 									</div>
 								</div>
-								<!-- Item -->
-								<div class="fw-carousel-review">
-
-									<div class="testimonial-box">
-										<div class="testimonial"><p>Nam eu eleifend nulla. Duis consectetur sit amet
-											risus sit amet venenatis. Pellentesque pulvinar ante a tincidunt placerat.
-											Donec dapibus efficitur arcu, a rhoncus lectus egestas elementum.</p>
-										</div>
-									</div>
-									<div class="testimonial-author">
-										<img alt="" class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-											 height="130" sizes="(max-width: 130px) 100vw, 130px"
-											 src="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-01.png"
-											 srcset="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-01.png 130w, https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-01-100x100.png 100w"
-											 width="130"/>                    <h4>Tom Wilson <span>HR Specialist</span>
-									</h4>
-									</div>
-								</div>
-								<!-- Item -->
-								<div class="fw-carousel-review">
-
-									<div class="testimonial-box">
-										<div class="testimonial"><p>Nam eu eleifend nulla. Duis consectetur sit amet
-											risus sit amet venenatis. Pellentesque pulvinar ante a tincidunt placerat.
-											Donec dapibus efficitur arcu, a rhoncus lectus egestas elementum.</p>
-										</div>
-									</div>
-									<div class="testimonial-author">
-										<img alt="" class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-											 height="130" sizes="(max-width: 130px) 100vw, 130px"
-											 src="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-02.png"
-											 srcset="https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-02.png 130w, https://39sf152pf74z2negmt1gi8ik-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/resumes-list-avatar-02-100x100.png 100w"
-											 width="130"/>                    <h4>Anna Smith <span>Jobseeker</span></h4>
-									</div>
-								</div>
-
 
 							</div>
 						</div>
