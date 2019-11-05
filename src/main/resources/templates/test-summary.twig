@@ -29,11 +29,13 @@
             </div>
         </div>
         {% elseif test.isUserRegistered %}
+	{% if test.isOngoing %}
         <div class="five columns">
             <div class="job-manager-form wp-job-manager-bookmarks-form">
                 <div><a class="button dark" href="/tests/{{ test.id }}/solve">Enter the test</a></div>
             </div>
         </div>
+	{% endif %}
         {% endif %}
     </div>
 </div>
